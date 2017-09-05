@@ -3,8 +3,8 @@
 # para rodar este script é necessário que estejam instaladas duas ferramentas:
 #  apt-get install doxygen xdot
 
-cd ~/ethanol/hostapd-2.6
+cd /home/ethanol/ethanol_hostapd/hostapd-2.6
 
-doxygen ~/ethanol/doxygen/config
+doxygen /home/ethanol/ethanol_hostapd/doxygen/config
 
-rm -fr ~/ethanol/doxygen/latex/
+rm -fr /home/ethanol/ethanol_hostapd/doxygen/latex/
