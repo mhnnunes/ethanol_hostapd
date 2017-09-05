@@ -1,0 +1,15 @@
+<map id="wps_context" name="wps_context">
+<area shape="rect" id="node2" href="$structwps__registrar.html" title="wps_registrar" alt="" coords="977,328,1077,355"/>
+<area shape="rect" id="node3" href="$structwps__registrar__device.html" title="wps_registrar_device" alt="" coords="697,151,842,177"/>
+<area shape="rect" id="node4" href="$structwps__device__data.html" title="wps_device_data" alt="" coords="433,83,556,109"/>
+<area shape="rect" id="node5" href="$structwpabuf.html" title="wpabuf" alt="" coords="169,133,233,160"/>
+<area shape="rect" id="node14" href="$structupnp__pending__message.html" title="upnp_pending_message" alt="" coords="413,172,576,199"/>
+<area shape="rect" id="node6" href="$structdl__list.html" title="dl_list" alt="" coords="5,349,61,376"/>
+<area shape="rect" id="node9" href="$structupnp__wps__device__sm.html" title="upnp_wps_device_sm" alt="" coords="419,344,570,371"/>
+<area shape="rect" id="node13" href="$structadvertisement__state__machine.html" title="advertisement_state\l_machine" alt="" coords="131,253,271,294"/>
+<area shape="rect" id="node7" href="$structos__reltime.html" title="os_reltime" alt="" coords="453,561,536,588"/>
+<area shape="rect" id="node8" href="$structwps__pbc__session.html" title="wps_pbc_session" alt="" coords="706,503,833,529"/>
+<area shape="rect" id="node10" href="$structhttp__server.html" title="http_server" alt="" coords="158,491,245,517"/>
+<area shape="rect" id="node11" href="$structhttp__request.html" title="http_request" alt="" coords="447,511,542,537"/>
+<area shape="rect" id="node12" href="$structhttpread.html" title="httpread" alt="" coords="167,581,236,608"/>
+</map>

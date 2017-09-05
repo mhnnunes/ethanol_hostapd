@@ -1,0 +1,11 @@
+<map id="wps_event_data" name="wps_event_data">
+<area shape="rect" id="node2" href="$structwps__event__data_1_1wps__event__er__enrollee.html" title="wps_event_data::wps\l_event_er_enrollee" alt="" coords="197,5,347,46"/>
+<area shape="rect" id="node3" href="$structwps__event__data_1_1wps__event__er__ap.html" title="wps_event_data::wps\l_event_er_ap" alt="" coords="197,70,347,111"/>
+<area shape="rect" id="node4" href="$structwps__event__data_1_1wps__event__er__ap__settings.html" title="wps_event_data::wps\l_event_er_ap_settings" alt="" coords="195,135,349,177"/>
+<area shape="rect" id="node5" href="$structwps__credential.html" title="wps_credential" alt="" coords="5,143,115,169"/>
+<area shape="rect" id="node6" href="$structwps__event__data_1_1wps__event__pwd__auth__fail.html" title="wps_event_data::wps\l_event_pwd_auth_fail" alt="" coords="197,201,347,242"/>
+<area shape="rect" id="node7" href="$structwps__event__data_1_1wps__event__fail.html" title="wps_event_data::wps\l_event_fail" alt="" coords="197,266,347,307"/>
+<area shape="rect" id="node8" href="$structwps__event__data_1_1wps__event__m2d.html" title="wps_event_data::wps\l_event_m2d" alt="" coords="197,331,347,373"/>
+<area shape="rect" id="node9" href="$structwps__event__data_1_1wps__event__er__set__selected__registrar.html" title="wps_event_data::wps\l_event_er_set_selected\l_registrar" alt="" coords="192,396,352,452"/>
+<area shape="rect" id="node10" href="$structwps__event__data_1_1wps__event__success.html" title="wps_event_data::wps\l_event_success" alt="" coords="197,475,347,517"/>
+</map>

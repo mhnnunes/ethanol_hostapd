@@ -1,0 +1,7 @@
+<map id="eloop_event" name="eloop_event">
+<area shape="rect" id="node2" href="$structeloop__data.html" title="eloop_data" alt="" coords="160,219,245,245"/>
+<area shape="rect" id="node3" href="$structeloop__sock__table.html" title="eloop_sock_table" alt="" coords="240,97,363,124"/>
+<area shape="rect" id="node4" href="$structeloop__sock.html" title="eloop_sock" alt="" coords="168,5,256,32"/>
+<area shape="rect" id="node5" href="$structdl__list.html" title="dl_list" alt="" coords="387,97,441,124"/>
+<area shape="rect" id="node6" href="$structeloop__signal.html" title="eloop_signal" alt="" coords="521,97,615,124"/>
+</map>

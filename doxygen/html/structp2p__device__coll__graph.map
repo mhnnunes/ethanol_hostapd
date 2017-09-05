@@ -1,0 +1,8 @@
+<map id="p2p_device" name="p2p_device">
+<area shape="rect" id="node2" href="$structdl__list.html" title="dl_list" alt="" coords="5,127,60,153"/>
+<area shape="rect" id="node3" href="$structp2p__channels.html" title="p2p_channels" alt="" coords="139,127,241,153"/>
+<area shape="rect" id="node4" href="$structp2p__channels_1_1p2p__reg__class.html" title="p2p_channels::p2p_reg\l_class" alt="" coords="113,6,268,47"/>
+<area shape="rect" id="node5" href="$structp2p__peer__info.html" title="p2p_peer_info" alt="" coords="394,127,496,153"/>
+<area shape="rect" id="node6" href="$structwpabuf.html" title="wpabuf" alt="" coords="325,13,389,40"/>
+<area shape="rect" id="node7" href="$structos__reltime.html" title="os_reltime" alt="" coords="521,127,603,153"/>
+</map>

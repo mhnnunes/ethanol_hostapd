@@ -1,0 +1,6 @@
+<map id="fst_event_extra" name="fst_event_extra">
+<area shape="rect" id="node2" href="$structfst__event__extra_1_1fst__event__extra__session__state.html" title="fst_event_extra::fst\l_event_extra_session_state" alt="" coords="259,19,445,61"/>
+<area shape="rect" id="node3" href="$unionfst__event__extra_1_1fst__event__extra__session__state_1_1fst__session__state__switch__extra.html" title="fst_event_extra::fst\l_event_extra_session\l_state::fst_session_state\l_switch_extra" alt="" coords="6,5,175,75"/>
+<area shape="rect" id="node4" href="$structfst__event__extra_1_1fst__event__extra__iface__state.html" title="fst_event_extra::fst\l_event_extra_iface_state" alt="" coords="268,85,436,126"/>
+<area shape="rect" id="node5" href="$structfst__event__extra_1_1fst__event__extra__peer__state.html" title="fst_event_extra::fst\l_event_extra_peer_state" alt="" coords="269,150,435,191"/>
+</map>

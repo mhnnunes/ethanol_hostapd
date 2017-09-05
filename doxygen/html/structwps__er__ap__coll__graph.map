@@ -1,0 +1,20 @@
+<map id="wps_er_ap" name="wps_er_ap">
+<area shape="rect" id="node2" href="$structhttp__client.html" title="http_client" alt="" coords="5,336,87,363"/>
+<area shape="rect" id="node3" href="$structhttpread.html" title="httpread" alt="" coords="167,5,236,32"/>
+<area shape="rect" id="node16" href="$structhttp__request.html" title="http_request" alt="" coords="617,97,711,124"/>
+<area shape="rect" id="node4" href="$structwpabuf.html" title="wpabuf" alt="" coords="353,199,417,225"/>
+<area shape="rect" id="node8" href="$structwps__context.html" title="wps_context" alt="" coords="411,493,507,520"/>
+<area shape="rect" id="node9" href="$structwps__registrar.html" title="wps_registrar" alt="" coords="718,613,817,640"/>
+<area shape="rect" id="node11" href="$structwps__device__data.html" title="wps_device_data" alt="" coords="565,336,688,363"/>
+<area shape="rect" id="node18" href="$structupnp__pending__message.html" title="upnp_pending_message" alt="" coords="168,336,331,363"/>
+<area shape="rect" id="node19" href="$structwps__data.html" title="wps_data" alt="" coords="261,613,339,640"/>
+<area shape="rect" id="node5" href="$structwps__credential.html" title="wps_credential" alt="" coords="91,493,200,520"/>
+<area shape="rect" id="node6" href="$structwps__er.html" title="wps_er" alt="" coords="1017,613,1081,640"/>
+<area shape="rect" id="node7" href="$structdl__list.html" title="dl_list" alt="" coords="1112,97,1167,124"/>
+<area shape="rect" id="node14" href="$structupnp__wps__device__sm.html" title="upnp_wps_device_sm" alt="" coords="763,336,913,363"/>
+<area shape="rect" id="node17" href="$structadvertisement__state__machine.html" title="advertisement_state\l_machine" alt="" coords="962,191,1101,233"/>
+<area shape="rect" id="node10" href="$structwps__registrar__device.html" title="wps_registrar_device" alt="" coords="531,493,676,520"/>
+<area shape="rect" id="node12" href="$structos__reltime.html" title="os_reltime" alt="" coords="1080,336,1161,363"/>
+<area shape="rect" id="node13" href="$structwps__pbc__session.html" title="wps_pbc_session" alt="" coords="1006,493,1132,520"/>
+<area shape="rect" id="node15" href="$structhttp__server.html" title="http_server" alt="" coords="706,199,792,225"/>
+</map>

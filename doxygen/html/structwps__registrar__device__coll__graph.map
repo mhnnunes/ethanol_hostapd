@@ -1,0 +1,4 @@
+<map id="wps_registrar_device" name="wps_registrar_device">
+<area shape="rect" id="node2" href="$structwps__device__data.html" title="wps_device_data" alt="" coords="16,109,139,136"/>
+<area shape="rect" id="node3" href="$structwpabuf.html" title="wpabuf" alt="" coords="45,5,109,32"/>
+</map>

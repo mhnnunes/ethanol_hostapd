@@ -1,0 +1,13 @@
+<map id="wiphy_info_data" name="wiphy_info_data">
+<area shape="rect" id="node2" href="$structwpa__driver__capa.html" title="wpa_driver_capa" alt="" coords="17,220,137,247"/>
+<area shape="rect" id="node4" href="$structwpa__driver__nl80211__data.html" title="wpa_driver_nl80211_data" alt="" coords="249,323,417,349"/>
+<area shape="rect" id="node3" href="$structwowlan__triggers.html" title="wowlan_triggers" alt="" coords="5,97,120,124"/>
+<area shape="rect" id="node8" href="$structi802__bss.html" title="i802_bss" alt="" coords="392,413,465,440"/>
+<area shape="rect" id="node5" href="$structrfkill__data.html" title="rfkill_data" alt="" coords="294,220,372,247"/>
+<area shape="rect" id="node6" href="$structrfkill__config.html" title="rfkill_config" alt="" coords="261,97,349,124"/>
+<area shape="rect" id="node7" href="$structdl__list.html" title="dl_list" alt="" coords="444,97,499,124"/>
+<area shape="rect" id="node9" href="$structnl80211__wiphy__data.html" title="nl80211_wiphy_data" alt="" coords="587,272,727,299"/>
+<area shape="rect" id="node10" href="$structnl80211__global.html" title="nl80211_global" alt="" coords="162,220,269,247"/>
+<area shape="rect" id="node11" href="$structnetlink__data.html" title="netlink_data" alt="" coords="145,97,236,124"/>
+<area shape="rect" id="node12" href="$structnetlink__config.html" title="netlink_config" alt="" coords="139,5,241,32"/>
+</map>

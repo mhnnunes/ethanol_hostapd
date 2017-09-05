@@ -1,0 +1,4 @@
+<map id="p2p_nfc_params" name="p2p_nfc_params">
+<area shape="rect" id="node2" href="$structp2p__peer__info.html" title="p2p_peer_info" alt="" coords="13,109,115,136"/>
+<area shape="rect" id="node3" href="$structwpabuf.html" title="wpabuf" alt="" coords="32,5,96,32"/>
+</map>

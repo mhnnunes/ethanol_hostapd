@@ -1,0 +1,7 @@
+<map id="test_driver_bss" name="test_driver_bss">
+<area shape="rect" id="node4" href="$structtest__client__socket.html" title="test_client_socket" alt="" coords="5,189,133,216"/>
+<area shape="rect" id="node2" href="$structdl__list.html" title="dl_list" alt="" coords="233,7,288,33"/>
+<area shape="rect" id="node3" href="$structwpa__driver__test__data.html" title="wpa_driver_test_data" alt="" coords="221,280,368,307"/>
+<area shape="rect" id="node5" href="$structwpa__scan__res.html" title="wpa_scan_res" alt="" coords="332,189,439,216"/>
+<area shape="rect" id="node6" href="$structwpa__driver__test__global.html" title="wpa_driver_test_global" alt="" coords="463,189,616,216"/>
+</map>

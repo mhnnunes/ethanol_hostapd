@@ -1,0 +1,6 @@
+<map id="ikev2_responder_data" name="ikev2_responder_data">
+<area shape="rect" id="node2" href="$structikev2__keys.html" title="ikev2_keys" alt="" coords="5,5,93,32"/>
+<area shape="rect" id="node3" href="$structdh__group.html" title="dh_group" alt="" coords="117,5,191,32"/>
+<area shape="rect" id="node4" href="$structwpabuf.html" title="wpabuf" alt="" coords="216,5,280,32"/>
+<area shape="rect" id="node5" href="$structikev2__proposal__data.html" title="ikev2_proposal_data" alt="" coords="304,5,444,32"/>
+</map>

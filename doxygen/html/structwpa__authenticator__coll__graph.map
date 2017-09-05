@@ -1,0 +1,11 @@
+<map id="wpa_authenticator" name="wpa_authenticator">
+<area shape="rect" id="node2" href="$structwpa__auth__config.html" title="wpa_auth_config" alt="" coords="5,293,125,320"/>
+<area shape="rect" id="node3" href="$structrsn__pmksa__cache.html" title="rsn_pmksa_cache" alt="" coords="149,293,277,320"/>
+<area shape="rect" id="node4" href="$structrsn__pmksa__cache__entry.html" title="rsn_pmksa_cache_entry" alt="" coords="131,188,295,215"/>
+<area shape="rect" id="node5" href="$structradius__class__data.html" title="radius_class_data" alt="" coords="85,96,211,123"/>
+<area shape="rect" id="node6" href="$structradius__attr__data.html" title="radius_attr_data" alt="" coords="91,5,205,32"/>
+<area shape="rect" id="node7" href="$structwpabuf.html" title="wpabuf" alt="" coords="236,96,300,123"/>
+<area shape="rect" id="node8" href="$structwpa__stsl__negotiation.html" title="wpa_stsl_negotiation" alt="" coords="301,293,445,320"/>
+<area shape="rect" id="node9" href="$structwpa__auth__callbacks.html" title="wpa_auth_callbacks" alt="" coords="523,293,663,320"/>
+<area shape="rect" id="node10" href="$structwpa__group.html" title="wpa_group" alt="" coords="688,293,773,320"/>
+</map>

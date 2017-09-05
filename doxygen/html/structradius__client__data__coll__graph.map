@@ -1,0 +1,11 @@
+<map id="radius_client_data" name="radius_client_data">
+<area shape="rect" id="node2" href="$structhostapd__radius__servers.html" title="hostapd_radius_servers" alt="" coords="99,229,257,256"/>
+<area shape="rect" id="node3" href="$structhostapd__ip__addr.html" title="hostapd_ip_addr" alt="" coords="5,5,121,32"/>
+<area shape="rect" id="node4" href="$structhostapd__radius__server.html" title="hostapd_radius_server" alt="" coords="114,96,267,123"/>
+<area shape="rect" id="node5" href="$structradius__msg__list.html" title="radius_msg_list" alt="" coords="283,229,396,256"/>
+<area shape="rect" id="node6" href="$structos__reltime.html" title="os_reltime" alt="" coords="293,96,375,123"/>
+<area shape="rect" id="node7" href="$structradius__msg.html" title="radius_msg" alt="" coords="401,96,489,123"/>
+<area shape="rect" id="node8" href="$structradius__hdr.html" title="radius_hdr" alt="" coords="355,5,436,32"/>
+<area shape="rect" id="node9" href="$structwpabuf.html" title="wpabuf" alt="" coords="461,5,525,32"/>
+<area shape="rect" id="node10" href="$structradius__rx__handler.html" title="radius_rx_handler" alt="" coords="474,229,597,256"/>
+</map>

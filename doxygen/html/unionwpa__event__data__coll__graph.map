@@ -1,0 +1,36 @@
+<map id="wpa_event_data" name="wpa_event_data">
+<area shape="rect" id="node2" href="$structwpa__event__data_1_1driver__gtk__rekey.html" title="wpa_event_data::driver\l_gtk_rekey" alt="" coords="29,13,187,54"/>
+<area shape="rect" id="node3" href="$structwpa__event__data_1_1rx__probe__req.html" title="wpa_event_data::rx\l_probe_req" alt="" coords="40,78,176,119"/>
+<area shape="rect" id="node4" href="$structwpa__event__data_1_1remain__on__channel.html" title="wpa_event_data::remain\l_on_channel" alt="" coords="26,143,190,185"/>
+<area shape="rect" id="node5" href="$structwpa__event__data_1_1disassoc__info.html" title="wpa_event_data::disassoc_info" alt="" coords="5,209,211,236"/>
+<area shape="rect" id="node6" href="$structwpa__event__data_1_1scan__info.html" title="wpa_event_data::scan_info" alt="" coords="17,260,199,287"/>
+<area shape="rect" id="node7" href="$structwpa__event__data_1_1rx__from__unknown.html" title="wpa_event_data::rx\l_from_unknown" alt="" coords="40,311,176,353"/>
+<area shape="rect" id="node8" href="$structwpa__event__data_1_1ft__rrb__rx.html" title="wpa_event_data::ft\l_rrb_rx" alt="" coords="41,377,175,418"/>
+<area shape="rect" id="node9" href="$structwpa__event__data_1_1ibss__rsn__start.html" title="wpa_event_data::ibss\l_rsn_start" alt="" coords="33,442,183,483"/>
+<area shape="rect" id="node10" href="$structwpa__event__data_1_1michael__mic__failure.html" title="wpa_event_data::michael\l_mic_failure" alt="" coords="23,507,193,549"/>
+<area shape="rect" id="node11" href="$structwpa__event__data_1_1ch__switch.html" title="wpa_event_data::ch\l_switch" alt="" coords="39,573,177,614"/>
+<area shape="rect" id="node12" href="$structwpa__event__data_1_1interface__status.html" title="wpa_event_data::interface\l_status" alt="" coords="21,638,195,679"/>
+<area shape="rect" id="node13" href="$structwpa__event__data_1_1new__sta.html" title="wpa_event_data::new_sta" alt="" coords="21,704,195,731"/>
+<area shape="rect" id="node14" href="$structwpa__event__data_1_1rx__mgmt.html" title="wpa_event_data::rx_mgmt" alt="" coords="20,755,196,781"/>
+<area shape="rect" id="node15" href="$structwpa__event__data_1_1tx__status.html" title="wpa_event_data::tx\l_status" alt="" coords="40,806,176,847"/>
+<area shape="rect" id="node16" href="$structwpa__event__data_1_1eapol__tx__status.html" title="wpa_event_data::eapol\l_tx_status" alt="" coords="30,871,186,913"/>
+<area shape="rect" id="node17" href="$structwpa__event__data_1_1assoc__reject.html" title="wpa_event_data::assoc\l_reject" alt="" coords="28,937,188,978"/>
+<area shape="rect" id="node18" href="$structwpa__event__data_1_1ft__ies.html" title="wpa_event_data::ft_ies" alt="" coords="29,1003,187,1029"/>
+<area shape="rect" id="node19" href="$structwpa__event__data_1_1deauth__info.html" title="wpa_event_data::deauth_info" alt="" coords="12,1053,204,1080"/>
+<area shape="rect" id="node20" href="$structwpa__event__data_1_1low__ack.html" title="wpa_event_data::low_ack" alt="" coords="21,1104,195,1131"/>
+<area shape="rect" id="node21" href="$structwpa__event__data_1_1pmkid__candidate.html" title="wpa_event_data::pmkid\l_candidate" alt="" coords="28,1155,188,1197"/>
+<area shape="rect" id="node22" href="$structwpa__event__data_1_1auth__info.html" title="wpa_event_data::auth_info" alt="" coords="19,1221,197,1248"/>
+<area shape="rect" id="node23" href="$structwpa__event__data_1_1best__channel.html" title="wpa_event_data::best\l_channel" alt="" coords="33,1273,183,1314"/>
+<area shape="rect" id="node24" href="$structwpa__event__data_1_1wnm.html" title="wpa_event_data::wnm" alt="" coords="31,1339,185,1365"/>
+<area shape="rect" id="node25" href="$structwpa__event__data_1_1tdls.html" title="wpa_event_data::tdls" alt="" coords="35,1389,181,1416"/>
+<area shape="rect" id="node26" href="$structwpa__event__data_1_1stkstart.html" title="wpa_event_data::stkstart" alt="" coords="23,1440,193,1467"/>
+<area shape="rect" id="node27" href="$structwpa__event__data_1_1eapol__rx.html" title="wpa_event_data::eapol_rx" alt="" coords="21,1491,195,1517"/>
+<area shape="rect" id="node28" href="$structwpa__event__data_1_1mlme__rx.html" title="wpa_event_data::mlme_rx" alt="" coords="21,1541,195,1568"/>
+<area shape="rect" id="node29" href="$structwpa__event__data_1_1unprot__disassoc.html" title="wpa_event_data::unprot\l_disassoc" alt="" coords="27,1593,189,1634"/>
+<area shape="rect" id="node30" href="$structwpa__event__data_1_1timeout__event.html" title="wpa_event_data::timeout\l_event" alt="" coords="24,1658,192,1699"/>
+<area shape="rect" id="node31" href="$structwpa__event__data_1_1assoc__info.html" title="wpa_event_data::assoc_info" alt="" coords="14,1724,202,1751"/>
+<area shape="rect" id="node32" href="$structwpa__event__data_1_1unprot__deauth.html" title="wpa_event_data::unprot\l_deauth" alt="" coords="27,1775,189,1817"/>
+<area shape="rect" id="node33" href="$structwpa__signal__info.html" title="wpa_signal_info" alt="" coords="51,1841,165,1868"/>
+<area shape="rect" id="node34" href="$structwpa__event__data_1_1client__poll.html" title="wpa_event_data::client_poll" alt="" coords="17,1892,199,1919"/>
+<area shape="rect" id="node35" href="$structwpa__event__data_1_1ibss__peer__lost.html" title="wpa_event_data::ibss\l_peer_lost" alt="" coords="33,1943,183,1985"/>
+</map>

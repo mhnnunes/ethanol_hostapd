@@ -1,0 +1,4 @@
+<map id="list_bridges" name="list_bridges">
+<area shape="rect" id="node2" href="$structlist__bridge__ports.html" title="list_bridge_ports" alt="" coords="4,96,120,123"/>
+<area shape="rect" id="node3" href="$structlist__port.html" title="list_port" alt="" coords="29,5,96,32"/>
+</map>

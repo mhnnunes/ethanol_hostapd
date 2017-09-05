@@ -1,0 +1,4 @@
+<map id="traffic_indication_map" name="traffic_indication_map">
+<area shape="rect" id="node2" href="$structbeacon__country.html" title="beacon_country" alt="" coords="21,96,136,123"/>
+<area shape="rect" id="node3" href="$structbeacon__channels.html" title="beacon_channels" alt="" coords="17,5,140,32"/>
+</map>

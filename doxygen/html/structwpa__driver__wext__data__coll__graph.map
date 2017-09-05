@@ -1,0 +1,8 @@
+<map id="wpa_driver_wext_data" name="wpa_driver_wext_data">
+<area shape="rect" id="node2" href="$structwpa__driver__capa.html" title="wpa_driver_capa" alt="" coords="5,96,125,123"/>
+<area shape="rect" id="node3" href="$structwowlan__triggers.html" title="wowlan_triggers" alt="" coords="5,5,120,32"/>
+<area shape="rect" id="node4" href="$structrfkill__data.html" title="rfkill_data" alt="" coords="153,96,231,123"/>
+<area shape="rect" id="node5" href="$structrfkill__config.html" title="rfkill_config" alt="" coords="148,5,236,32"/>
+<area shape="rect" id="node6" href="$structnetlink__data.html" title="netlink_data" alt="" coords="261,96,352,123"/>
+<area shape="rect" id="node7" href="$structnetlink__config.html" title="netlink_config" alt="" coords="261,5,363,32"/>
+</map>

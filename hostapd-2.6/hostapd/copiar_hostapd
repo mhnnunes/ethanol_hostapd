@@ -1,0 +1,33 @@
+#!/bin/bash
+#
+# usage: without arguments, only copies hostapd to the destinations
+#
+# usage: if anything is passed as an argument, this script compiles iw and wireless-tools
+#        and copies files to the destinations
+
+EXTRAS=true
+if [[ $# -eq 1 ]]; then
+  EXTRAS=true
+
+  pushd .
+  # compile iw
+  cd ~/ethanol/iw-4.9
+  make clean
+  make ethanol
+
+  cd ~/ethanol/wireless_tools.29
+  make clean
+  make
+  popd
+fi
+
+# copia hostapd e iw
+MAQUINAS="thunder storm windy cloud sun malboro"
+  echo "copiando para computador <<$m>>"
+  scp ~/ethanol/hostapd-2.6/hostapd/hostapd winet@$m.winet.dcc.ufmg.br:~
+  if [ "$EXTRAS" = true ]; then
+  scp ~/ethanol/iw-4.9/iw winet@$m.winet.dcc.ufmg.br:~
+  scp ~/ethanol/wireless_tools.29/iwconfig winet@$m.winet.dcc.ufmg.br:~
+  scp ~/ethanol/wireless_tools.29/libiw* winet@$m.winet.dcc.ufmg.br:~
+  fi
+done

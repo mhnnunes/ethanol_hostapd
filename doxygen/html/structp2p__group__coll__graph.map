@@ -1,0 +1,18 @@
+<map id="p2p_group" name="p2p_group">
+<area shape="rect" id="node5" href="$structp2p__data.html" title="p2p_data" alt="" coords="941,383,1016,409"/>
+<area shape="rect" id="node2" href="$structp2p__group__member.html" title="p2p_group_member" alt="" coords="313,92,449,119"/>
+<area shape="rect" id="node3" href="$structwpabuf.html" title="wpabuf" alt="" coords="52,228,116,255"/>
+<area shape="rect" id="node6" href="$structp2p__sd__query.html" title="p2p_sd_query" alt="" coords="486,285,589,312"/>
+<area shape="rect" id="node8" href="$structp2p__device.html" title="p2p_device" alt="" coords="657,468,745,495"/>
+<area shape="rect" id="node12" href="$structp2p__peer__info.html" title="p2p_peer_info" alt="" coords="330,408,433,435"/>
+<area shape="rect" id="node4" href="$structp2p__group__config.html" title="p2p_group_config" alt="" coords="319,143,443,169"/>
+<area shape="rect" id="node7" href="$structp2p__pending__action__tx.html" title="p2p_pending_action_tx" alt="" coords="624,331,779,357"/>
+<area shape="rect" id="node9" href="$structdl__list.html" title="dl_list" alt="" coords="353,357,409,384"/>
+<area shape="rect" id="node10" href="$structp2p__channels.html" title="p2p_channels" alt="" coords="330,632,433,659"/>
+<area shape="rect" id="node16" href="$structp2p__config.html" title="p2p_config" alt="" coords="659,693,744,720"/>
+<area shape="rect" id="node11" href="$structp2p__channels_1_1p2p__reg__class.html" title="p2p_channels::p2p_reg\l_class" alt="" coords="6,625,162,666"/>
+<area shape="rect" id="node13" href="$structos__reltime.html" title="os_reltime" alt="" coords="340,552,423,579"/>
+<area shape="rect" id="node14" href="$structwpa__freq__range__list.html" title="wpa_freq_range_list" alt="" coords="632,764,771,791"/>
+<area shape="rect" id="node15" href="$structwpa__freq__range__list_1_1wpa__freq__range.html" title="wpa_freq_range_list\l::wpa_freq_range" alt="" coords="312,778,451,819"/>
+<area shape="rect" id="node17" href="$structp2p__channel.html" title="p2p_channel" alt="" coords="334,727,429,753"/>
+</map>

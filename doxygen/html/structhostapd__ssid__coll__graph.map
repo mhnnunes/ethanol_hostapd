@@ -1,0 +1,4 @@
+<map id="hostapd_ssid" name="hostapd_ssid">
+<area shape="rect" id="node2" href="$structhostapd__wep__keys.html" title="hostapd_wep_keys" alt="" coords="5,5,139,32"/>
+<area shape="rect" id="node3" href="$structhostapd__wpa__psk.html" title="hostapd_wpa_psk" alt="" coords="163,5,289,32"/>
+</map>

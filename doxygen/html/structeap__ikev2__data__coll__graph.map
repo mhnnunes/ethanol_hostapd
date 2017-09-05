@@ -1,0 +1,8 @@
+<map id="eap_ikev2_data" name="eap_ikev2_data">
+<area shape="rect" id="node2" href="$structikev2__initiator__data.html" title="ikev2_initiator_data" alt="" coords="130,140,264,167"/>
+<area shape="rect" id="node3" href="$structikev2__keys.html" title="ikev2_keys" alt="" coords="339,5,427,32"/>
+<area shape="rect" id="node7" href="$structikev2__responder__data.html" title="ikev2_responder_data" alt="" coords="305,140,453,167"/>
+<area shape="rect" id="node4" href="$structdh__group.html" title="dh_group" alt="" coords="217,5,291,32"/>
+<area shape="rect" id="node5" href="$structwpabuf.html" title="wpabuf" alt="" coords="529,5,593,32"/>
+<area shape="rect" id="node6" href="$structikev2__proposal__data.html" title="ikev2_proposal_data" alt="" coords="5,5,145,32"/>
+</map>

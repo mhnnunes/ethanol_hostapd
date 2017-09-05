@@ -1,0 +1,10 @@
+#!/bin/sh
+#
+# para rodar este script é necessário que estejam instaladas duas ferramentas:
+#  apt-get install doxygen xdot
+
+cd ~/ethanol/hostapd-2.6
+
+doxygen ~/ethanol/doxygen/config
+
+rm -fr ~/ethanol/doxygen/latex/

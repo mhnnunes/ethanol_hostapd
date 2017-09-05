@@ -1,0 +1,35 @@
+<map id="eapol_state_machine" name="eapol_state_machine">
+<area shape="rect" id="node2" href="$structradius__class__data.html" title="radius_class_data" alt="" coords="1237,8,1363,35"/>
+<area shape="rect" id="node3" href="$structradius__attr__data.html" title="radius_attr_data" alt="" coords="1023,8,1137,35"/>
+<area shape="rect" id="node4" href="$structeapol__authenticator.html" title="eapol_authenticator" alt="" coords="1233,636,1367,663"/>
+<area shape="rect" id="node5" href="$structeapol__auth__config.html" title="eapol_auth_config" alt="" coords="1017,703,1143,729"/>
+<area shape="rect" id="node6" href="$structwps__context.html" title="wps_context" alt="" coords="743,820,839,847"/>
+<area shape="rect" id="node7" href="$structwps__registrar.html" title="wps_registrar" alt="" coords="1030,984,1130,1011"/>
+<area shape="rect" id="node21" href="$structeap__sm.html" title="eap_sm" alt="" coords="1046,559,1114,585"/>
+<area shape="rect" id="node8" href="$structwps__registrar__device.html" title="wps_registrar_device" alt="" coords="718,921,863,948"/>
+<area shape="rect" id="node9" href="$structwps__device__data.html" title="wps_device_data" alt="" coords="433,936,556,963"/>
+<area shape="rect" id="node10" href="$structwpabuf.html" title="wpabuf" alt="" coords="169,664,233,691"/>
+<area shape="rect" id="node19" href="$structupnp__pending__message.html" title="upnp_pending_message" alt="" coords="413,885,576,912"/>
+<area shape="rect" id="node27" href="$structext__password__backend.html" title="ext_password_backend" alt="" coords="415,428,574,455"/>
+<area shape="rect" id="node29" href="$structeap__method.html" title="eap_method" alt="" coords="600,508,693,535"/>
+<area shape="rect" id="node31" href="$structhostapd__radius__attr.html" title="hostapd_radius_attr" alt="" coords="427,568,563,595"/>
+<area shape="rect" id="node32" href="$structeap__eapol__interface.html" title="eap_eapol_interface" alt="" coords="721,664,860,691"/>
+<area shape="rect" id="node33" href="$structradius__msg.html" title="radius_msg" alt="" coords="450,1248,539,1275"/>
+<area shape="rect" id="node11" href="$structdl__list.html" title="dl_list" alt="" coords="5,1125,61,1152"/>
+<area shape="rect" id="node14" href="$structupnp__wps__device__sm.html" title="upnp_wps_device_sm" alt="" coords="419,1056,570,1083"/>
+<area shape="rect" id="node18" href="$structadvertisement__state__machine.html" title="advertisement_state\l_machine" alt="" coords="131,1029,271,1070"/>
+<area shape="rect" id="node12" href="$structos__reltime.html" title="os_reltime" alt="" coords="453,1115,536,1141"/>
+<area shape="rect" id="node13" href="$structwps__pbc__session.html" title="wps_pbc_session" alt="" coords="727,1073,854,1100"/>
+<area shape="rect" id="node15" href="$structhttp__server.html" title="http_server" alt="" coords="158,1368,245,1395"/>
+<area shape="rect" id="node16" href="$structhttp__request.html" title="http_request" alt="" coords="447,1363,542,1389"/>
+<area shape="rect" id="node17" href="$structhttpread.html" title="httpread" alt="" coords="167,1317,236,1344"/>
+<area shape="rect" id="node20" href="$structeapol__auth__cb.html" title="eapol_auth_cb" alt="" coords="1027,636,1133,663"/>
+<area shape="rect" id="node22" href="$structeap__sim__db__data.html" title="eap_sim_db_data" alt="" coords="729,236,853,263"/>
+<area shape="rect" id="node23" href="$structeap__sim__db__pending.html" title="eap_sim_db_pending" alt="" coords="423,237,567,264"/>
+<area shape="rect" id="node24" href="$structeap__sim__reauth.html" title="eap_sim_reauth" alt="" coords="437,327,552,353"/>
+<area shape="rect" id="node25" href="$structeap__sim__pseudonym.html" title="eap_sim_pseudonym" alt="" coords="422,148,567,175"/>
+<area shape="rect" id="node26" href="$structext__password__data.html" title="ext_password_data" alt="" coords="723,435,858,461"/>
+<area shape="rect" id="node28" href="$structeapol__callbacks.html" title="eapol_callbacks" alt="" coords="733,611,848,637"/>
+<area shape="rect" id="node30" href="$structeap__user.html" title="eap_user" alt="" coords="753,560,828,587"/>
+<area shape="rect" id="node34" href="$structradius__hdr.html" title="radius_hdr" alt="" coords="160,1267,243,1293"/>
+</map>

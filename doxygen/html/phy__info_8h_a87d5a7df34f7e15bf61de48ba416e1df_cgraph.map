@@ -1,0 +1,8 @@
+<map id="get_phy_info" name="get_phy_info">
+<area shape="rect" id="node2" href="$nl80211__socket_8h.html#a4c3410bdd226719e8b10de697ac544d0" title="start_socket" alt="" coords="154,5,249,32"/>
+<area shape="rect" id="node4" href="$nl80211__socket_8h.html#a2d694fc3bc9d4617a5f88e8cb21051e1" title="nl_socket_free" alt="" coords="304,56,411,83"/>
+<area shape="rect" id="node5" href="$nl80211__socket_8h.html#a667a56d21a4e1a0ec320634c6aa69201" title="error_handler" alt="" coords="153,107,250,133"/>
+<area shape="rect" id="node6" href="$nl80211__socket_8h.html#a7219f421549c5a39fbada4aa320103b9" title="finish_handler" alt="" coords="150,157,253,184"/>
+<area shape="rect" id="node7" href="$nl80211__socket_8h.html#ad1c360cd787447f9e130074ef276b911" title="ack_handler" alt="" coords="155,208,247,235"/>
+<area shape="rect" id="node3" href="$nl80211__socket_8h.html#a230def94ba1ff5c6719572c896384256" title="nl_socket_alloc" alt="" coords="301,5,413,32"/>
+</map>

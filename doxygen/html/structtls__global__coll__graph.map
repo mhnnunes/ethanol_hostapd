@@ -1,0 +1,9 @@
+<map id="tls_global" name="tls_global">
+<area shape="rect" id="node2" href="$structtlsv1__credentials.html" title="tlsv1_credentials" alt="" coords="61,320,181,347"/>
+<area shape="rect" id="node3" href="$structcrypto__private__key.html" title="crypto_private_key" alt="" coords="5,216,136,243"/>
+<area shape="rect" id="node4" href="$structx509__certificate.html" title="x509_certificate" alt="" coords="161,216,276,243"/>
+<area shape="rect" id="node5" href="$structx509__algorithm__identifier.html" title="x509_algorithm_identifier" alt="" coords="55,96,221,123"/>
+<area shape="rect" id="node6" href="$structasn1__oid.html" title="asn1_oid" alt="" coords="127,5,200,32"/>
+<area shape="rect" id="node7" href="$structx509__name.html" title="x509_name" alt="" coords="246,96,335,123"/>
+<area shape="rect" id="node8" href="$structx509__name__attr.html" title="x509_name_attr" alt="" coords="233,5,348,32"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="eap_sim_db_data" name="eap_sim_db_data">
+<area shape="rect" id="node2" href="$structeap__sim__db__pending.html" title="eap_sim_db_pending" alt="" coords="5,5,149,32"/>
+<area shape="rect" id="node3" href="$structeap__sim__reauth.html" title="eap_sim_reauth" alt="" coords="227,5,341,32"/>
+<area shape="rect" id="node4" href="$structeap__sim__pseudonym.html" title="eap_sim_pseudonym" alt="" coords="419,5,564,32"/>
+</map>

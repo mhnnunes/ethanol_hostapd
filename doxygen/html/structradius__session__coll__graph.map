@@ -1,0 +1,33 @@
+<map id="radius_session" name="radius_session">
+<area shape="rect" id="node30" href="$structradius__client.html" title="radius_client" alt="" coords="1494,733,1589,760"/>
+<area shape="rect" id="node2" href="$structhostapd__radius__attr.html" title="hostapd_radius_attr" alt="" coords="427,1033,563,1060"/>
+<area shape="rect" id="node26" href="$structeap__user.html" title="eap_user" alt="" coords="753,896,828,923"/>
+<area shape="rect" id="node3" href="$structwpabuf.html" title="wpabuf" alt="" coords="169,595,233,621"/>
+<area shape="rect" id="node4" href="$structeap__sm.html" title="eap_sm" alt="" coords="1033,760,1101,787"/>
+<area shape="rect" id="node10" href="$structext__password__backend.html" title="ext_password_backend" alt="" coords="415,944,574,971"/>
+<area shape="rect" id="node12" href="$structeap__method.html" title="eap_method" alt="" coords="600,1064,693,1091"/>
+<area shape="rect" id="node13" href="$structwps__context.html" title="wps_context" alt="" coords="743,160,839,187"/>
+<area shape="rect" id="node14" href="$structwps__registrar.html" title="wps_registrar" alt="" coords="1017,228,1117,255"/>
+<area shape="rect" id="node16" href="$structwps__device__data.html" title="wps_device_data" alt="" coords="433,277,556,304"/>
+<area shape="rect" id="node25" href="$structupnp__pending__message.html" title="upnp_pending_message" alt="" coords="413,367,576,393"/>
+<area shape="rect" id="node27" href="$structeap__eapol__interface.html" title="eap_eapol_interface" alt="" coords="721,571,860,597"/>
+<area shape="rect" id="node31" href="$structradius__msg.html" title="radius_msg" alt="" coords="450,1135,539,1161"/>
+<area shape="rect" id="node5" href="$structeap__sim__db__data.html" title="eap_sim_db_data" alt="" coords="729,775,853,801"/>
+<area shape="rect" id="node6" href="$structeap__sim__db__pending.html" title="eap_sim_db_pending" alt="" coords="423,804,567,831"/>
+<area shape="rect" id="node7" href="$structeap__sim__reauth.html" title="eap_sim_reauth" alt="" coords="437,893,552,920"/>
+<area shape="rect" id="node8" href="$structeap__sim__pseudonym.html" title="eap_sim_pseudonym" alt="" coords="422,715,567,741"/>
+<area shape="rect" id="node9" href="$structext__password__data.html" title="ext_password_data" alt="" coords="723,832,858,859"/>
+<area shape="rect" id="node11" href="$structeapol__callbacks.html" title="eapol_callbacks" alt="" coords="733,644,848,671"/>
+<area shape="rect" id="node28" href="$structradius__server__data.html" title="radius_server_data" alt="" coords="1681,571,1813,597"/>
+<area shape="rect" id="node15" href="$structwps__registrar__device.html" title="wps_registrar_device" alt="" coords="718,261,863,288"/>
+<area shape="rect" id="node17" href="$structdl__list.html" title="dl_list" alt="" coords="5,99,61,125"/>
+<area shape="rect" id="node20" href="$structupnp__wps__device__sm.html" title="upnp_wps_device_sm" alt="" coords="419,105,570,132"/>
+<area shape="rect" id="node24" href="$structadvertisement__state__machine.html" title="advertisement_state\l_machine" alt="" coords="131,91,271,133"/>
+<area shape="rect" id="node18" href="$structos__reltime.html" title="os_reltime" alt="" coords="453,417,536,444"/>
+<area shape="rect" id="node19" href="$structwps__pbc__session.html" title="wps_pbc_session" alt="" coords="727,417,854,444"/>
+<area shape="rect" id="node21" href="$structhttp__server.html" title="http_server" alt="" coords="158,1225,245,1252"/>
+<area shape="rect" id="node22" href="$structhttp__request.html" title="http_request" alt="" coords="447,1268,542,1295"/>
+<area shape="rect" id="node23" href="$structhttpread.html" title="httpread" alt="" coords="167,1313,236,1340"/>
+<area shape="rect" id="node29" href="$structradius__server__counters.html" title="radius_server_counters" alt="" coords="1229,620,1387,647"/>
+<area shape="rect" id="node32" href="$structradius__hdr.html" title="radius_hdr" alt="" coords="160,1175,243,1201"/>
+</map>

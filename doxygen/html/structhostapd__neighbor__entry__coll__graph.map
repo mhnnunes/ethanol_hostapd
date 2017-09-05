@@ -1,0 +1,6 @@
+<map id="hostapd_neighbor_entry" name="hostapd_neighbor_entry">
+<area shape="rect" id="node2" href="$structwpa__ssid__value.html" title="wpa_ssid_value" alt="" coords="5,7,120,33"/>
+<area shape="rect" id="node3" href="$structdl__list.html" title="dl_list" alt="" coords="144,7,199,33"/>
+<area shape="rect" id="node4" href="$structos__time.html" title="os_time" alt="" coords="278,7,345,33"/>
+<area shape="rect" id="node5" href="$structwpabuf.html" title="wpabuf" alt="" coords="371,7,435,33"/>
+</map>

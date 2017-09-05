@@ -1,0 +1,18 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+#include "buffer_handler_fun.h"
+#include "msg_common.h"
+#include "msg_station_set_ipv4_address.h"
+
+
+void encode_msg_station_set_ipv4_address(struct msg_station_set_ipv4_address * h, char ** buf, int * buf_len) {}
+
+void decode_msg_station_set_ipv4_address(char * buf, int buf_len, struct msg_station_set_ipv4_address ** h) {}
+
+void process_msg_station_set_ipv4_address(enum Enum_msg_type msg_type, int m_id, char ** buf, int * buf_len) {}
+
+void send_msg_station_set_ipv4_address(char * hostname, int portnum, int * id)
+
+

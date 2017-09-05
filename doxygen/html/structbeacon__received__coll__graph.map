@@ -1,0 +1,7 @@
+<map id="beacon_received" name="beacon_received">
+<area shape="rect" id="node2" href="$structbeacon__country.html" title="beacon_country" alt="" coords="9,96,124,123"/>
+<area shape="rect" id="node3" href="$structbeacon__channels.html" title="beacon_channels" alt="" coords="5,5,128,32"/>
+<area shape="rect" id="node4" href="$structrobust__secure__network.html" title="robust_secure_network" alt="" coords="148,96,305,123"/>
+<area shape="rect" id="node5" href="$structsupported__rates.html" title="supported_rates" alt="" coords="329,96,444,123"/>
+<area shape="rect" id="node6" href="$structht__capability.html" title="ht_capability" alt="" coords="469,96,563,123"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="phy_info" name="phy_info">
+<area shape="rect" id="node2" href="$structband.html" title="band" alt="" coords="15,96,65,123"/>
+<area shape="rect" id="node3" href="$structfreq.html" title="freq" alt="" coords="18,5,61,32"/>
+</map>

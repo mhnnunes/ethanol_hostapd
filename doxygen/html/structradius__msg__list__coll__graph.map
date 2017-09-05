@@ -1,0 +1,6 @@
+<map id="radius_msg_list" name="radius_msg_list">
+<area shape="rect" id="node2" href="$structos__reltime.html" title="os_reltime" alt="" coords="5,96,87,123"/>
+<area shape="rect" id="node3" href="$structradius__msg.html" title="radius_msg" alt="" coords="113,96,201,123"/>
+<area shape="rect" id="node4" href="$structradius__hdr.html" title="radius_hdr" alt="" coords="67,5,148,32"/>
+<area shape="rect" id="node5" href="$structwpabuf.html" title="wpabuf" alt="" coords="173,5,237,32"/>
+</map>

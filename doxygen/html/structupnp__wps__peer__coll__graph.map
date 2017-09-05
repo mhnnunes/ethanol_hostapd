@@ -1,0 +1,18 @@
+<map id="upnp_wps_peer" name="upnp_wps_peer">
+<area shape="rect" id="node2" href="$structwps__data.html" title="wps_data" alt="" coords="1011,104,1090,131"/>
+<area shape="rect" id="node3" href="$structwps__credential.html" title="wps_credential" alt="" coords="725,68,835,95"/>
+<area shape="rect" id="node4" href="$structwps__context.html" title="wps_context" alt="" coords="732,355,828,381"/>
+<area shape="rect" id="node5" href="$structwps__registrar.html" title="wps_registrar" alt="" coords="1001,401,1101,428"/>
+<area shape="rect" id="node6" href="$structwps__registrar__device.html" title="wps_registrar_device" alt="" coords="707,271,853,297"/>
+<area shape="rect" id="node7" href="$structwps__device__data.html" title="wps_device_data" alt="" coords="433,184,556,211"/>
+<area shape="rect" id="node8" href="$structwpabuf.html" title="wpabuf" alt="" coords="169,295,233,321"/>
+<area shape="rect" id="node17" href="$structupnp__pending__message.html" title="upnp_pending_message" alt="" coords="413,395,576,421"/>
+<area shape="rect" id="node9" href="$structdl__list.html" title="dl_list" alt="" coords="5,479,61,505"/>
+<area shape="rect" id="node12" href="$structupnp__wps__device__sm.html" title="upnp_wps_device_sm" alt="" coords="419,504,570,531"/>
+<area shape="rect" id="node16" href="$structadvertisement__state__machine.html" title="advertisement_state\l_machine" alt="" coords="131,541,271,582"/>
+<area shape="rect" id="node10" href="$structos__reltime.html" title="os_reltime" alt="" coords="453,559,536,585"/>
+<area shape="rect" id="node11" href="$structwps__pbc__session.html" title="wps_pbc_session" alt="" coords="717,535,843,561"/>
+<area shape="rect" id="node13" href="$structhttp__server.html" title="http_server" alt="" coords="158,607,245,633"/>
+<area shape="rect" id="node14" href="$structhttp__request.html" title="http_request" alt="" coords="447,652,542,679"/>
+<area shape="rect" id="node15" href="$structhttpread.html" title="httpread" alt="" coords="167,697,236,724"/>
+</map>

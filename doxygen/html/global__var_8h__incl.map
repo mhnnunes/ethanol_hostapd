@@ -1,0 +1,23 @@
+<map id="src/ap/global_var.h" name="src/ap/global_var.h">
+<area shape="rect" id="node2" href="$includes_8h_source.html" title="utils/includes.h" alt="" coords="743,88,852,115"/>
+<area shape="rect" id="node19" href="$common_8h_source.html" title="utils/common.h" alt="" coords="1718,395,1828,421"/>
+<area shape="rect" id="node24" href="$hostapd_8h_source.html" title="ap/hostapd.h" alt="" coords="1710,88,1807,115"/>
+<area shape="rect" id="node37" href="$global__typedef_8h.html" title="ethanol_functions/global\l_typedef.h" alt="" coords="2469,81,2632,122"/>
+<area shape="rect" id="node3" href="$build__config_8h_source.html" title="build_config.h" alt="" coords="1294,171,1396,197"/>
+<area shape="rect" id="node20" href="$os_8h_source.html" title="os.h" alt="" coords="1670,469,1716,496"/>
+<area shape="rect" id="node22" href="$wpa__debug_8h_source.html" title="wpa_debug.h" alt="" coords="1831,469,1929,496"/>
+<area shape="rect" id="node23" href="$wpabuf_8h_source.html" title="wpabuf.h" alt="" coords="1843,544,1916,571"/>
+<area shape="rect" id="node25" href="$defs_8h_source.html" title="common/defs.h" alt="" coords="1681,320,1792,347"/>
+<area shape="rect" id="node26" href="$list_8h_source.html" title="utils/list.h" alt="" coords="1806,245,1884,272"/>
+<area shape="rect" id="node27" href="$ap__config_8h_source.html" title="ap_config.h" alt="" coords="2042,171,2131,197"/>
+<area shape="rect" id="node36" href="$driver_8h_source.html" title="drivers/driver.h" alt="" coords="1705,171,1812,197"/>
+<area shape="rect" id="node28" href="$ip__addr_8h_source.html" title="ip_addr.h" alt="" coords="2417,245,2491,272"/>
+<area shape="rect" id="node29" href="$wpa__common_8h_source.html" title="common/wpa_common.h" alt="" coords="2516,245,2684,272"/>
+<area shape="rect" id="node30" href="$ieee802__11__defs_8h_source.html" title="common/ieee802_11_defs.h" alt="" coords="1839,320,2024,347"/>
+<area shape="rect" id="node31" href="$ieee802__11__common_8h_source.html" title="common/ieee802_11_common.h" alt="" coords="2183,245,2392,272"/>
+<area shape="rect" id="node32" href="$wps_8h_source.html" title="wps/wps.h" alt="" coords="2708,245,2793,272"/>
+<area shape="rect" id="node34" href="$fst_8h_source.html" title="fst/fst.h" alt="" coords="2011,245,2077,272"/>
+<area shape="rect" id="node35" href="$vlan_8h_source.html" title="vlan.h" alt="" coords="2102,245,2159,272"/>
+<area shape="rect" id="node33" href="$wps__defs_8h_source.html" title="wps_defs.h" alt="" coords="2706,320,2795,347"/>
+<area shape="rect" id="node39" href="$nl80211_8h_source.html" title="nl80211.h" alt="" coords="2511,171,2589,197"/>
+</map>

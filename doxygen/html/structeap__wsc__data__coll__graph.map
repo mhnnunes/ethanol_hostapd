@@ -1,0 +1,18 @@
+<map id="eap_wsc_data" name="eap_wsc_data">
+<area shape="rect" id="node2" href="$structwps__context.html" title="wps_context" alt="" coords="732,363,828,389"/>
+<area shape="rect" id="node3" href="$structwps__registrar.html" title="wps_registrar" alt="" coords="1001,456,1101,483"/>
+<area shape="rect" id="node16" href="$structwps__data.html" title="wps_data" alt="" coords="1011,187,1090,213"/>
+<area shape="rect" id="node4" href="$structwps__registrar__device.html" title="wps_registrar_device" alt="" coords="707,308,853,335"/>
+<area shape="rect" id="node5" href="$structwps__device__data.html" title="wps_device_data" alt="" coords="433,195,556,221"/>
+<area shape="rect" id="node6" href="$structwpabuf.html" title="wpabuf" alt="" coords="169,245,233,272"/>
+<area shape="rect" id="node15" href="$structupnp__pending__message.html" title="upnp_pending_message" alt="" coords="413,284,576,311"/>
+<area shape="rect" id="node7" href="$structdl__list.html" title="dl_list" alt="" coords="5,559,61,585"/>
+<area shape="rect" id="node10" href="$structupnp__wps__device__sm.html" title="upnp_wps_device_sm" alt="" coords="419,508,570,535"/>
+<area shape="rect" id="node14" href="$structadvertisement__state__machine.html" title="advertisement_state\l_machine" alt="" coords="131,551,271,593"/>
+<area shape="rect" id="node8" href="$structos__reltime.html" title="os_reltime" alt="" coords="453,565,536,592"/>
+<area shape="rect" id="node9" href="$structwps__pbc__session.html" title="wps_pbc_session" alt="" coords="717,545,843,572"/>
+<area shape="rect" id="node11" href="$structhttp__server.html" title="http_server" alt="" coords="158,668,245,695"/>
+<area shape="rect" id="node12" href="$structhttp__request.html" title="http_request" alt="" coords="447,665,542,692"/>
+<area shape="rect" id="node13" href="$structhttpread.html" title="httpread" alt="" coords="167,617,236,644"/>
+<area shape="rect" id="node17" href="$structwps__credential.html" title="wps_credential" alt="" coords="725,156,835,183"/>
+</map>

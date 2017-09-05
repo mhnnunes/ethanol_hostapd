@@ -1,0 +1,15 @@
+<map id="ieee802_1x_mka_participant" name="ieee802_1x_mka_participant">
+<area shape="rect" id="node2" href="$structtransmit__sc.html" title="transmit_sc" alt="" coords="331,508,421,535"/>
+<area shape="rect" id="node3" href="$structdl__list.html" title="dl_list" alt="" coords="49,476,105,503"/>
+<area shape="rect" id="node9" href="$structieee802__1x__kay.html" title="ieee802_1x_kay" alt="" coords="318,711,434,737"/>
+<area shape="rect" id="node14" href="$structdata__key.html" title="data_key" alt="" coords="339,336,413,363"/>
+<area shape="rect" id="node4" href="$structos__time.html" title="os_time" alt="" coords="43,352,111,379"/>
+<area shape="rect" id="node5" href="$structieee802__1x__mka__sci.html" title="ieee802_1x_mka_sci" alt="" coords="5,631,149,657"/>
+<area shape="rect" id="node6" href="$structmka__key.html" title="mka_key" alt="" coords="339,92,413,119"/>
+<area shape="rect" id="node7" href="$structmka__key__name.html" title="mka_key_name" alt="" coords="319,143,433,169"/>
+<area shape="rect" id="node8" href="$structieee802__1x__mka__peer__id.html" title="ieee802_1x_mka_peer_id" alt="" coords="291,193,461,220"/>
+<area shape="rect" id="node12" href="$structieee802__1x__cp__sm.html" title="ieee802_1x_cp_sm" alt="" coords="629,711,763,737"/>
+<area shape="rect" id="node10" href="$structieee802__1x__kay__ctx.html" title="ieee802_1x_kay_ctx" alt="" coords="7,725,148,752"/>
+<area shape="rect" id="node11" href="$structl2__packet__data.html" title="l2_packet_data" alt="" coords="22,776,133,803"/>
+<area shape="rect" id="node13" href="$structieee802__1x__mka__ki.html" title="ieee802_1x_mka_ki" alt="" coords="9,232,146,259"/>
+</map>

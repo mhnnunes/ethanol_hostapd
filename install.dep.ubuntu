@@ -1,0 +1,21 @@
+#!/bin/bash
+
+#
+# install all dependencies for compiling and linking hostapd, iw and ethanol
+#
+
+sudo apt-get install git gitk git-gui
+sudo apt-get install build-essential
+sudo apt-get install libnl-dev libssl-dev libiw-dev curl libcurl3 libcurl3-dev
+sudo apt-get install libnl-dev libnl1
+
+
+# python
+
+sudo apt-get install python-matplotlib python-numpy python-scipy python-networkx ipython
+wget -c https://pypi.python.org/packages/source/c/construct/construct-2.5.2.tar.gz
+tar zxvf construct-2.5.2.tar.gz
+cd construct-2.5.2
+sudo ./setup.py install
+
+

@@ -1,0 +1,20 @@
+<map id="upnp_wps_device_interface" name="upnp_wps_device_interface">
+<area shape="rect" id="node2" href="$structwps__context.html" title="wps_context" alt="" coords="732,499,828,525"/>
+<area shape="rect" id="node3" href="$structwps__registrar.html" title="wps_registrar" alt="" coords="1001,425,1101,452"/>
+<area shape="rect" id="node18" href="$structwps__data.html" title="wps_data" alt="" coords="1011,123,1090,149"/>
+<area shape="rect" id="node4" href="$structwps__registrar__device.html" title="wps_registrar_device" alt="" coords="707,223,853,249"/>
+<area shape="rect" id="node5" href="$structwps__device__data.html" title="wps_device_data" alt="" coords="433,197,556,224"/>
+<area shape="rect" id="node6" href="$structwpabuf.html" title="wpabuf" alt="" coords="169,304,233,331"/>
+<area shape="rect" id="node15" href="$structupnp__pending__message.html" title="upnp_pending_message" alt="" coords="413,393,576,420"/>
+<area shape="rect" id="node7" href="$structdl__list.html" title="dl_list" alt="" coords="5,631,61,657"/>
+<area shape="rect" id="node10" href="$structupnp__wps__device__sm.html" title="upnp_wps_device_sm" alt="" coords="419,565,570,592"/>
+<area shape="rect" id="node14" href="$structadvertisement__state__machine.html" title="advertisement_state\l_machine" alt="" coords="131,590,271,631"/>
+<area shape="rect" id="node8" href="$structos__reltime.html" title="os_reltime" alt="" coords="453,253,536,280"/>
+<area shape="rect" id="node9" href="$structwps__pbc__session.html" title="wps_pbc_session" alt="" coords="717,375,843,401"/>
+<area shape="rect" id="node11" href="$structhttp__server.html" title="http_server" alt="" coords="158,763,245,789"/>
+<area shape="rect" id="node12" href="$structhttp__request.html" title="http_request" alt="" coords="447,757,542,784"/>
+<area shape="rect" id="node13" href="$structhttpread.html" title="httpread" alt="" coords="167,712,236,739"/>
+<area shape="rect" id="node16" href="$structupnp__wps__device__ctx.html" title="upnp_wps_device_ctx" alt="" coords="1179,897,1330,924"/>
+<area shape="rect" id="node17" href="$structupnp__wps__peer.html" title="upnp_wps_peer" alt="" coords="1198,328,1311,355"/>
+<area shape="rect" id="node19" href="$structwps__credential.html" title="wps_credential" alt="" coords="725,71,835,97"/>
+</map>

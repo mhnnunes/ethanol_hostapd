@@ -1,0 +1,18 @@
+<map id="eapol_authenticator" name="eapol_authenticator">
+<area shape="rect" id="node2" href="$structeapol__auth__config.html" title="eapol_auth_config" alt="" coords="977,153,1103,180"/>
+<area shape="rect" id="node3" href="$structwps__context.html" title="wps_context" alt="" coords="721,177,817,204"/>
+<area shape="rect" id="node4" href="$structwps__registrar.html" title="wps_registrar" alt="" coords="990,245,1090,272"/>
+<area shape="rect" id="node5" href="$structwps__registrar__device.html" title="wps_registrar_device" alt="" coords="697,75,842,101"/>
+<area shape="rect" id="node6" href="$structwps__device__data.html" title="wps_device_data" alt="" coords="433,5,556,32"/>
+<area shape="rect" id="node7" href="$structwpabuf.html" title="wpabuf" alt="" coords="169,163,233,189"/>
+<area shape="rect" id="node16" href="$structupnp__pending__message.html" title="upnp_pending_message" alt="" coords="413,95,576,121"/>
+<area shape="rect" id="node8" href="$structdl__list.html" title="dl_list" alt="" coords="5,345,61,372"/>
+<area shape="rect" id="node11" href="$structupnp__wps__device__sm.html" title="upnp_wps_device_sm" alt="" coords="419,319,570,345"/>
+<area shape="rect" id="node15" href="$structadvertisement__state__machine.html" title="advertisement_state\l_machine" alt="" coords="131,249,271,290"/>
+<area shape="rect" id="node9" href="$structos__reltime.html" title="os_reltime" alt="" coords="453,376,536,403"/>
+<area shape="rect" id="node10" href="$structwps__pbc__session.html" title="wps_pbc_session" alt="" coords="706,356,833,383"/>
+<area shape="rect" id="node12" href="$structhttp__server.html" title="http_server" alt="" coords="158,425,245,452"/>
+<area shape="rect" id="node13" href="$structhttp__request.html" title="http_request" alt="" coords="447,471,542,497"/>
+<area shape="rect" id="node14" href="$structhttpread.html" title="httpread" alt="" coords="167,512,236,539"/>
+<area shape="rect" id="node17" href="$structeapol__auth__cb.html" title="eapol_auth_cb" alt="" coords="987,296,1093,323"/>
+</map>

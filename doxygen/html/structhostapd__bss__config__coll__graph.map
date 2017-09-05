@@ -1,0 +1,17 @@
+<map id="hostapd_bss_config" name="hostapd_bss_config">
+<area shape="rect" id="node2" href="$structhostapd__ip__addr.html" title="hostapd_ip_addr" alt="" coords="5,135,123,161"/>
+<area shape="rect" id="node7" href="$structhostapd__radius__servers.html" title="hostapd_radius_servers" alt="" coords="571,135,731,161"/>
+<area shape="rect" id="node8" href="$structhostapd__radius__server.html" title="hostapd_radius_server" alt="" coords="207,205,361,232"/>
+<area shape="rect" id="node3" href="$structmac__acl__entry.html" title="mac_acl_entry" alt="" coords="597,187,704,213"/>
+<area shape="rect" id="node4" href="$structhostapd__lang__string.html" title="hostapd_lang_string" alt="" coords="581,237,720,264"/>
+<area shape="rect" id="node5" href="$structhostapd__radius__attr.html" title="hostapd_radius_attr" alt="" coords="216,377,352,404"/>
+<area shape="rect" id="node16" href="$structhostapd__eap__user.html" title="hostapd_eap_user" alt="" coords="587,455,715,481"/>
+<area shape="rect" id="node6" href="$structwpabuf.html" title="wpabuf" alt="" coords="32,319,96,345"/>
+<area shape="rect" id="node9" href="$structhostapd__roaming__consortium.html" title="hostapd_roaming_consortium" alt="" coords="555,505,747,532"/>
+<area shape="rect" id="node10" href="$structhostapd__vlan.html" title="hostapd_vlan" alt="" coords="601,595,700,621"/>
+<area shape="rect" id="node11" href="$structhostapd__ssid.html" title="hostapd_ssid" alt="" coords="601,645,700,672"/>
+<area shape="rect" id="node12" href="$structhostapd__wep__keys.html" title="hostapd_wep_keys" alt="" coords="217,556,351,583"/>
+<area shape="rect" id="node13" href="$structhostapd__wpa__psk.html" title="hostapd_wpa_psk" alt="" coords="221,645,347,672"/>
+<area shape="rect" id="node14" href="$structhostapd__nai__realm__data.html" title="hostapd_nai_realm_data" alt="" coords="569,700,732,727"/>
+<area shape="rect" id="node15" href="$structhostapd__nai__realm__data_1_1hostapd__nai__realm__eap.html" title="hostapd_nai_realm_data\l::hostapd_nai_realm_eap" alt="" coords="201,697,367,738"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="msg_scan_received" name="msg_scan_received">
+<area shape="rect" id="node2" href="$structmsg__scan.html" title="msg_scan" alt="" coords="33,187,115,213"/>
+<area shape="rect" id="node3" href="$structscan__info__t.html" title="scan_info_t" alt="" coords="30,96,119,123"/>
+<area shape="rect" id="node4" href="$structcountry__data.html" title="country_data" alt="" coords="26,5,123,32"/>
+</map>
