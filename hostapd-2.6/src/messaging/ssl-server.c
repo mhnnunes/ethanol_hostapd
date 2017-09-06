@@ -835,12 +835,12 @@ void * send_hello_to_controller(void * arg) {
         // parece que existe uma condiçao de corrida na inicializacao do parametros do SSL
         // que ocorre nesta mensagem de hello e na entrada do run_ethanol_server
         // por isto fazemos o hello dormir, antes de chamar, assim run_ethanol_server executa primeiro
-        sleep(config->hello_frequency); // sleep for x seconds
         struct msg_hello * msg = send_msg_hello(config->server_addr, config->remote_server_port, &id, config->local_server_port);
         if (NULL != msg) {
           printf("Hello msg #%d sent to ethanol controller.\n", id);
         }
         free_msg_hello(&msg);
+        sleep(config->hello_frequency); // sleep for x seconds
     }
     //pthread_exit(NULL);
 }
