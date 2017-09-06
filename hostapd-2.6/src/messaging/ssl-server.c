@@ -864,7 +864,7 @@ void run_ethanol_server(ethanol_configuration * config) {
     printf("Local server running at %d\n", config->local_server_port);
     printf("waiting for new connections...\n");
 
-    if (config->ethanol_enable == 1) {
+    if (config->ethanol_enable == 1 && config->server_addr != NULL) {
      pthread_t hello_thread;
      pthread_create(&hello_thread, NULL, send_hello_to_controller, config);
     }
