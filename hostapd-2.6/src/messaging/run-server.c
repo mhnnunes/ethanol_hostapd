@@ -81,7 +81,7 @@
 
 void usage(char * argv[]) {
     #ifdef HANDOVER
-        printf("sudo %s [-l LOCAL_PORT] [-a CONTROLLER_ADDR [-p CONTROLLER_PORT]] [-i SNR_INTERVAL] [-t SNR_THRESHOLD]\n", argv[0]);
+        printf("sudo %s [-l LOCAL_PORT] [-i SNR_INTERVAL] [-t SNR_THRESHOLD]\n", argv[0]);
     #else
         printf("sudo %s [-l LOCAL_PORT] [-a CONTROLLER_ADDR [-p CONTROLLER_PORT]]\n", argv[0]);
     #endif
@@ -121,7 +121,12 @@ int main(int argc, char * argv[]) {
 
     opterr = 0;
     int c;
-    while ((c = getopt (argc, argv, "p:a:l:hi:t:")) != -1)
+    #ifdef HANDOVER
+      #define PARAMETER_STRING "l:hi:t:"
+    #else
+      #define PARAMETER_STRING "p:a:l:h"
+    #endif
+    while ((c = getopt (argc, argv, PARAMETER_STRING)) != -1)
     switch (c) {
         case 'l':
             config.local_server_port = atoi(optarg);
