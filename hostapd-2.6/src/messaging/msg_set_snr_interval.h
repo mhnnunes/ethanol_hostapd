@@ -47,7 +47,7 @@ void free_msg_snr_interval(struct msg_snr_interval ** m );
 void printf_msg_snr_interval(struct msg_snr_interval * h);
 
 // in miliseconds (default value)
-#define DEFAULT_SNR_INTERVAL 10
+#define DEFAULT_SNR_INTERVAL 1000
 
 long long get_snr_interval(char * intf_name);
 

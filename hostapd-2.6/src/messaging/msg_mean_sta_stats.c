@@ -5,6 +5,7 @@
 #include "openssl/ssl.h"
 #include "ssl_common.h"
 
+#include "../ethanol_functions/utils_str.h"
 #include "../ethanol_functions/net_statistics.h"
 
 #include "buffer_handler_fun.h"
@@ -242,6 +243,7 @@ void decode_msg_mean_sta_statistics_interface(char * buf, int buf_len, msg_mean_
 
 void send_msg_mean_sta_statistics_interface(char * hostname, int portnum, int * id, char * sta_ip, int sta_port,
                                            char * intf_name, bool add) {
+  printf("intf_name=%s\n", intf_name);
   struct ssl_connection h_ssl;
   // << step 1 - get connection
   int err = get_ssl_connection(hostname, portnum, &h_ssl);
@@ -264,6 +266,7 @@ void send_msg_mean_sta_statistics_interface(char * hostname, int portnum, int * 
 
     h.intf_name = NULL;
     copy_string(&h.intf_name, intf_name);
+    printf("new intf %s\n", h.intf_name);
 
     h.m_size = size_msg_mean_sta_statistics_interface(&h);
 
@@ -421,9 +424,10 @@ void send_msg_mean_sta_statistics_time(char * hostname, int portnum, int * id,
 
 
 void process_msg_mean_sta_statistics(char ** input, int input_len, char ** output, int * output_len){
+    char * input_msg = *input;
     int m_type, m_id, m_size;
     char * p_version;
-    decode_header(input, &m_type, &m_id, &m_size, &p_version);
+    decode_header(&input_msg, &m_type, &m_id, &m_size, &p_version);
     switch (m_type) {
         case MSG_MEAN_STA_STATISTICS_GET: {
           msg_mean_sta_statistics * h1;

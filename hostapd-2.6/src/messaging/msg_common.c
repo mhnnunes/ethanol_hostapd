@@ -19,16 +19,6 @@ float timeval_subtract(struct timeval *final, struct timeval *inicio) {
     return diff/1000;
 }
 
-void copy_string(char ** dest, char * orig){
-  if (*dest) free(*dest);
-  if (orig) {
-    *dest = malloc(strlen(orig + 1) * sizeof(char));
-    strcpy(*dest, orig);   
-  } else { // orig == NULL, so
-    *dest = NULL;
-  }
-}
-
 #define NUM_CHARS_PER_LINE 40
 void print_buffer_in_hex(char * buffer, long len){
   int i;

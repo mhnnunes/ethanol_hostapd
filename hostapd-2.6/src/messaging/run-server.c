@@ -21,8 +21,8 @@
     #include "msg_intf.h"
     #include "msg_set_snr_interval.h"
     #include "msg_set_snr_threshold.h"
+	#include "msg_snr_threshold_reached.h"
     #include "msg_mean_sta_stats.h"
-    #include "msg_intf.h"
     #include "list_aps.h"
     #include "list_stations.h"
 
@@ -30,11 +30,11 @@
       For handover experiment, all wireless interface are named "wlan0"
      */
     #define WIRELESS_INTERFACE "wlan0"
-    #define ETHERNET_INTERFACE "eth0"
+    #define ETHERNET_INTERFACE "eth1"
 
     // global variables
     long long snr_interval = DEFAULT_SNR_INTERVAL;
-    long long snr_threshold = DEFAULT_SNR_THRESHOLD;
+	long long snr_threshold = DEFAULT_SNR_THRESHOLD;
 
     // hello event function
     int configure_experiment(int device_type, char * hostname, int port_num) {
@@ -68,7 +68,9 @@
                     send_msg_set_snr_threshold(hostname, port_num, &id, r->intf[i].intf_name, NULL, 0, snr_threshold);
                 }
             }
-            // 3) set to collect interface statistics (mean tx_bytes per second and rx_bytes per second)
+        }
+        if (device_type == 1) {
+        	// 3) set to collect interface statistics (mean tx_bytes per second and rx_bytes per second)
             char * intf_name = ETHERNET_INTERFACE; // ethernet interface (bridge) is eth0 in all devices
             send_msg_mean_sta_statistics_interface_add(hostname, port_num, &id, NULL, 0, intf_name);
             send_msg_mean_sta_statistics_alpha(hostname, port_num, &id, NULL, 0, 0.1);
@@ -81,7 +83,7 @@
 
 void usage(char * argv[]) {
     #ifdef HANDOVER
-        printf("sudo %s [-l LOCAL_PORT] [-i SNR_INTERVAL] [-t SNR_THRESHOLD]\n", argv[0]);
+        printf("sudo %s [-l LOCAL_PORT] [-i SNR_INTERVAL] [-t SNR_THRESHOLD] [-s SIGNAL_THRESHOLD]\n", argv[0]);
     #else
         printf("sudo %s [-l LOCAL_PORT] [-a CONTROLLER_ADDR [-p CONTROLLER_PORT]]\n", argv[0]);
     #endif
@@ -91,6 +93,7 @@ void usage(char * argv[]) {
     #ifdef HANDOVER
         printf("-i set SNR interval.\n");
         printf("-t set SNR threshold.\n");
+        printf("-s set SIGNAL threshold.\n");
     #endif
     printf("\n");
 }
@@ -121,12 +124,7 @@ int main(int argc, char * argv[]) {
 
     opterr = 0;
     int c;
-    #ifdef HANDOVER
-      #define PARAMETER_STRING "l:hi:t:"
-    #else
-      #define PARAMETER_STRING "p:a:l:h"
-    #endif
-    while ((c = getopt (argc, argv, PARAMETER_STRING)) != -1)
+    while ((c = getopt (argc, argv, "p:a:l:hi:t:s:")) != -1)
     switch (c) {
         case 'l':
             config.local_server_port = atoi(optarg);
@@ -144,6 +142,9 @@ int main(int argc, char * argv[]) {
             break;
         case 't':
             snr_threshold = atoi(optarg);
+            break;
+        case 's':
+            set_signal_threshold(atoi(optarg));
             break;
         #endif
 

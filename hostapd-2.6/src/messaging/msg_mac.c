@@ -5,11 +5,13 @@
 #include "openssl/ssl.h"
 #include "ssl_common.h"
 
+#include "../ethanol_functions/utils_str.h"
+#include "../ethanol_functions/get_interfaces.h"
+
 #include "buffer_handler_fun.h"
 #include "msg_common.h"
 #include "msg_mac.h"
 
-#include "../ethanol_functions/get_interfaces.h"
 
 // find size of struct interface_mac
 unsigned long message_size_mac(struct msg_mac * h){

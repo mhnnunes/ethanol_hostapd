@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "../ethanol_functions/utils_str.h"
+
 #include "buffer_handler_fun.h"
 #include "msg_common.h"
 #include "msg_mgmtframe.h"

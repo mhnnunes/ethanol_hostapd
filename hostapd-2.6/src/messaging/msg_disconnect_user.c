@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "../ethanol_functions/utils_str.h"
+
 #include "openssl/ssl.h"
 #include "ssl_common.h"
 

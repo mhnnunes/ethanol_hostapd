@@ -25,12 +25,12 @@ struct wapi_quality * wapi_get_wifi_quality(char * intf_name) {
       char * aux = trim(iname);
       aux[strlen(aux)-1] = '\0'; // tem que remover os dois pontos
       strcpy(iname, aux);
-      if (strcmp(aux, intf_name) == 0) {        
+      if (strcmp(aux, intf_name) == 0) {
         // achou a interface
         q = malloc(sizeof(struct wapi_quality));
         q->intf_name = malloc((strlen(aux)+1)*sizeof(char));
         strcpy(q->intf_name, aux);
-        sscanf(line, "%s %d %f %f %f %li %li %li %li %li %li", 
+        sscanf(line, "%s %d %f %f %f %li %li %li %li %li %li",
            iname,
            &q->status,
            &q->link_quality,
@@ -45,7 +45,7 @@ struct wapi_quality * wapi_get_wifi_quality(char * intf_name) {
       }
       //free(aux);
     }
-    fclose(fp);    
+    fclose(fp);
   }
   if (line) free(line);
   return q;
@@ -54,7 +54,7 @@ struct wapi_quality * wapi_get_wifi_quality(char * intf_name) {
 #ifdef USE_MAIN
 int main() {
   char * intf_name = "wlan0";
-  struct wapi_quality * q = wapi_get_wifi_quality(intf_name);  
+  struct wapi_quality * q = wapi_get_wifi_quality(intf_name);
   printf("%s : %d %f %f %f %li %li %li %li %li %li\n", q->intf_name,
            q->status,
            q->link_quality,

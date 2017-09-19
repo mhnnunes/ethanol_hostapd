@@ -6,11 +6,12 @@
 #include "openssl/ssl.h"
 #include "ssl_common.h"
 
+#include "../ethanol_functions/utils_str.h"
+#include "../ethanol_functions/80211e.h"
+
 #include "buffer_handler_fun.h"
 #include "msg_common.h"
 #include "msg_802_11e_enabled.h"
-
-#include "../ethanol_functions/80211e.h"
 
 unsigned long size_msg_802_11e_enabled(struct msg_802_11e_enabled * h){
   return strlen_ethanol(h->p_version) + sizeof(h->m_type) + sizeof(h->m_size) + sizeof(h->m_id) +

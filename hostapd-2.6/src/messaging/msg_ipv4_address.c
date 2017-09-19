@@ -9,6 +9,7 @@
 #include "buffer_handler_fun.h"
 #include "msg_common.h"
 #include "msg_ipv4_address.h"
+#include "../ethanol_functions/utils_str.h"
 #include "../ethanol_functions/getnetlink.h"
 #include "../ethanol_functions/get_route.h"
 #include "../ethanol_functions/get_dns.h"

@@ -6,6 +6,8 @@
 #include "msg_common.h"
 #include "msg_ap_enabled.h"
 
+#include "../ethanol_functions/utils_str.h"
+
 
 void encode_msg_ap_enabled(struct msg_ap_enabled * h, char ** buf, int * buf_len) {}
 

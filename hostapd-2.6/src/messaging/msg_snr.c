@@ -9,6 +9,7 @@
 #include "msg_common.h"
 #include "msg_snr.h"
 
+#include "../ethanol_functions/utils_str.h"
 #include "../ethanol_functions/get_interfaces.h"
 
 #ifdef PROCESS_STATION

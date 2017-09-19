@@ -15,7 +15,7 @@
 
     #include "../ethanol_functions/time_stamp.h"
     #include "../ethanol_functions/get_interfaces.h"
-    #include "../ethanol_functions/get_snr.h"
+    #include "../ethanol_functions/getnetlink.h"
     #include "../ethanol_functions/time_stamp.h"
     #include "../ethanol_functions/iw_link.h"
     #include "../ethanol_functions/change_ap.h"
@@ -24,6 +24,7 @@
     #include "msg_set_snr_threshold.h"
     #include "msg_snr_threshold_reached.h"
     #include "msg_changed_ap.h"
+    #include "msg_intf.h"
 
     // all our stations will use a wireless interface in wlan0
     #define WIRELESS_INTERFACE "wlan0"
@@ -72,7 +73,8 @@ int main(int argc, char * argv[]) {
     config.remote_server_port=SERVER_PORT;
 
     config.log_filename = NULL;
-    config.hello_frequency = HELLO_FREQUENCY;
+    //config.hello_frequency = HELLO_FREQUENCY;
+    config.hello_frequency = 300;
 
     opterr = 0;
     int c;
@@ -114,25 +116,42 @@ int main(int argc, char * argv[]) {
         while (true) {
             struct timeval t_now;
             gettimeofday(&t_now, NULL);
-
-            long long snr = (long long) get_snr(intf_name_snr);
+            long long snr = 5000000; //Default impossible value
+            struct netlink_stats * ns = get_interface_stats(intf_name_snr);
+            if(ns){
+            	snr = -1*(ns->signal - ns->noise);
+            	printf("SNR:%lld\n", snr);
+            	free(ns);
+            }
             long long snr_t = get_snr_threshold(intf_name_snr);
+            printf("TRESH:%lld\n", snr_t);
             if (snr <= snr_t) {
                 iw_link_info_t * iwl = get_iw_link(intf_name_snr);
+                char * mac, * mc;
+                mac = NULL;
+                mc = "34:23:87:77:0d:2f";
+                mac = (char *) malloc((strlen(mc)+1)*sizeof(char));
+                strcpy(mac, mc);
                 if (iwl) {
                     // iwl->mac_address => current ap mac_address
                     struct msg_snr_threshold_reached * m = send_msg_snr_threshold_reached(config.server_addr, config.remote_server_port, &id, NULL, 0,
-                                                              intf_name_snr,
+                                                              mac, intf_name_snr,
                                                               iwl->mac_address,
                                                               snr);
+                    printf("após o send\n");
                     if (m) {
+                        printf("macap %s iwlmac %s\n", m->mac_ap, iwl->mac_address);
                         if (strcmp(m->mac_ap, iwl->mac_address) != 0) {
+                        printf("Entrou no if\n");
                             // controller returned another MAC address, so change to the new AP
                             int status = roam_change_ap(intf_name_snr, m->mac_ap); // m->mac_ap = new ap
                             if (status == 0) {
+                            printf("Status 0\n");
                                 // station informs controller that it could change to another AP
                                 send_msg_changed_ap(config.server_addr, config.remote_server_port, &id, status, m->mac_ap, intf_name_snr);
                             } else {
+                            printf("Status else\n");
+
                                 // inform failure
                                 send_msg_changed_ap(config.server_addr, config.remote_server_port, &id, status, iwl->mac_address, intf_name_snr);
                             }

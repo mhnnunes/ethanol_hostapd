@@ -777,9 +777,9 @@ void servlet(SSL* ssl, char * client_addr, int client_port) {
             break;
 
         case MSG_CHANGED_AP:
-             #ifdef DEBUG_SERVLET
+            #ifdef DEBUG_SERVLET
                printf("Receiving MSG_CHANGED_AP message from %s\n", client_addr);
-             #endif
+            #endif
             process_msg_changed_ap(&input_msg, input_len, &reply, &reply_len);
             break;
 
@@ -788,6 +788,9 @@ void servlet(SSL* ssl, char * client_addr, int client_port) {
         case MSG_MEAN_STA_STATISTICS_REMOVE_INTERFACE:
         case MSG_MEAN_STA_STATISTICS_SET_ALPHA:
         case MSG_MEAN_STA_STATISTICS_SET_TIME:
+            #ifdef DEBUG_SERVLET
+               printf("Receiving MSG_MEAN_STA_STATISTICS message from %s\n", client_addr);
+            #endif
             process_msg_mean_sta_statistics(&input_msg, input_len, &reply, &reply_len);
             break;
 
@@ -835,6 +838,7 @@ void * send_hello_to_controller(void * arg) {
         // parece que existe uma condiçao de corrida na inicializacao do parametros do SSL
         // que ocorre nesta mensagem de hello e na entrada do run_ethanol_server
         // por isto fazemos o hello dormir, antes de chamar, assim run_ethanol_server executa primeiro
+      sleep(1);
         struct msg_hello * msg = send_msg_hello(config->server_addr, config->remote_server_port, &id, config->local_server_port);
         if (NULL != msg) {
           printf("Hello msg #%d sent to ethanol controller.\n", id);

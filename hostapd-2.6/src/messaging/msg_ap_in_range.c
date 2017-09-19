@@ -10,6 +10,7 @@
 #include "msg_common.h"
 #include "msg_ap_in_range.h"
 
+#include "../ethanol_functions/utils_str.h"
 #include "../ethanol_functions/get_interfaces.h"
 #include "../ethanol_functions/wapi_scan2.h" // get_scanning_info @ STA
 

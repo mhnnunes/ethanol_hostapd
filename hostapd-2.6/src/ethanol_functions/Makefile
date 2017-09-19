@@ -9,6 +9,7 @@ CFLAGS += -Werror-implicit-function-declaration
 #CFLAGS += -DCONFIG_LIBNL30
 
 OBJS  = utils.o
+OBJS += utils_str.o
 OBJS += change_ap.o
 OBJS += 80211e.o
 OBJS += ap_txpower.o
@@ -58,9 +59,9 @@ teste:	$(OBJS)
 	$(CC) $(CFLAGS) -c -o teste.o teste.c
 	$(CC) $(LDFLAGS) $(OBJS) teste.o -lnl -lm -liw -o teste
 
-teste-getmac: utils.o
+teste-getmac: utils.o utils_str.o
 	$(CC) $(LDFLAGS) -c getmac.c -o getmac.o -DDEBUG -DUSE_MAIN
-	$(CC) $(LDFLAGS) utils.o getmac.o -o teste-getmac -DDEBUG -DUSE_MAIN
+	$(CC) $(LDFLAGS) utils.o utils_str.o getmac.o -o teste-getmac -DDEBUG -DUSE_MAIN
 
 teste-getinterfaces: utils.o is_wireless.o
 	$(CC) $(LDFLAGS) -c get_interfaces.c -o get_interfaces.o -DDEBUG -DUSE_MAIN
@@ -167,9 +168,9 @@ teste-net_statistics:
 	$(CC) $(LDFLAGS) -c net_statistics.c -o net_statistics.o -DDEBUG -DUSE_MAIN -lm
 	$(CC) $(LDFLAGS) net_statistics.o -o teste-net_statistics -DDEBUG -DUSE_MAIN -lm
 
-teste-mean_net_statistics:
+teste-mean_net_statistics: time_stamp.o
 	$(CC) $(LDFLAGS) -c net_statistics.c -o net_statistics.o -DDEBUG -DUSE_MAIN_HOSTAPD -lm -lpthread
-	$(CC) $(LDFLAGS) net_statistics.o -o teste-net_statistics -DDEBUG -DUSE_MAIN_HOSTAPD -lm -lpthread
+	$(CC) $(LDFLAGS) time_stamp.o net_statistics.o -o teste-net_statistics -DDEBUG -DUSE_MAIN_HOSTAPD -lm -lpthread
 
 teste-sta_statistics: connect.o
 	$(CC) $(LDFLAGS) -c sta_statistics.c -o sta_statistics.o -DDEBUG -DUSE_MAIN -lm

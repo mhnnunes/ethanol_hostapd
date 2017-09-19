@@ -59,4 +59,9 @@ struct addr_list * get_ipv6_address(char * intf);
  */
 void free_address(struct addr_list *** addresses, int n);
 
+/** deletes the ip addresses from an interface
+    this command needs "ip" command installed
+ */
+void clear_ip_from_interface(char * intfname);
+
 #endif /* GETIP_H */

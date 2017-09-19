@@ -5,6 +5,7 @@
 #include "openssl/ssl.h"
 #include "ssl_common.h"
 
+#include "../ethanol_functions/utils_str.h"
 #include "../ethanol_functions/change_ap.h"
 
 #include "buffer_handler_fun.h"

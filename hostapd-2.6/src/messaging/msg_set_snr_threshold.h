@@ -47,7 +47,7 @@ void free_msg_snr_threshold(struct msg_snr_threshold ** m );
 void printf_msg_snr_threshold(struct msg_snr_threshold * h);
 
 // in dB
-#define DEFAULT_SNR_THRESHOLD 10
+#define DEFAULT_SNR_THRESHOLD -50
 
 long long get_snr_threshold(char * intf_name);
 

@@ -26,12 +26,13 @@ void process_msg_snr_threshold_reached(char ** input, int input_len, char ** out
    :return mac_ap is the new ap
 */
 struct msg_snr_threshold_reached * send_msg_snr_threshold_reached(char * hostname, int portnum, int * id,
-                                                                  char * sta_ip, int sta_port,
+                                                                  char * sta_ip, int sta_port, char * sta_mac,
                                                                   char * intf_name, char * mac_current_ap, long long snr);
 
 void free_msg_snr_threshold_reached(struct msg_snr_threshold_reached ** m );
 
 void printf_msg_snr_threshold_reached(struct msg_snr_threshold_reached * h);
 
+void set_signal_threshold(long long new_threshold);
 
 #endif

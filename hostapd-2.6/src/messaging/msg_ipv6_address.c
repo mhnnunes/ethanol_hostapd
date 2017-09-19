@@ -6,6 +6,8 @@
 #include "openssl/ssl.h"
 #include "ssl_common.h"
 
+#include "../ethanol_functions/utils_str.h"
+
 #include "buffer_handler_fun.h"
 #include "msg_common.h"
 #include "msg_ipv6_address.h"

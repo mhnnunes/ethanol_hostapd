@@ -199,18 +199,6 @@ struct robust_secure_network {
 float timeval_subtract(struct timeval *final, struct timeval *inicio);
 
 
-/**
-  if dest == NULL, copy_char allocates memory space and then copy
-  if dest != NULL, copy_char frees this memory, allocates new space and then copy
-
-  CAUTION:
-    1) dest cannot be a char[]
-    2) be sure that dest is an assigned variable (malloc'ed) or is NULL
-       don't trust that the compiler will set the variable to NULL
- */
-void copy_string(char ** dest, char * orig);
-
-
 void print_buffer_in_hex(char * buffer, long len);
 
 #endif

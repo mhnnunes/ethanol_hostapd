@@ -5,6 +5,8 @@
 #include "openssl/ssl.h"
 #include "ssl_common.h"
 
+#include "../ethanol_functions/utils_str.h"
+
 #ifdef PROCESS_STATION
     #include "../ethanol_functions/wapi_txpower.h"
 #else

@@ -6,6 +6,7 @@
 #include "ssl_common.h"
 
 #include "../ethanol_functions/get_cpuinfo.h"
+#include "../ethanol_functions/utils_str.h"
 
 #include "buffer_handler_fun.h"
 #include "msg_common.h"

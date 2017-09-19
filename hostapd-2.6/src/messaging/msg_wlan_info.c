@@ -7,6 +7,7 @@
 
 #include "../ethanol_functions/nl80211.h"
 #include "../ethanol_functions/wlan_info.h"
+#include "../ethanol_functions/utils_str.h"
 
 #ifndef PROCESS_STATION
 #include "../ethanol_functions/hostapd_hooks.h"

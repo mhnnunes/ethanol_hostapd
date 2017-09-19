@@ -32,6 +32,7 @@ INCLUDES = -I. -I/usr/include
 LIBS   = -L/usr/lib -lssl -lcrypto -lm -lnl -liw -lpthread
 
 OBJS_FUNCOES =  ../ethanol_functions/utils.o
+OBJS_FUNCOES += ../ethanol_functions/utils_str.o
 OBJS_FUNCOES += ../ethanol_functions/80211e.o
 OBJS_FUNCOES += ../ethanol_functions/ap_txpower.o
 OBJS_FUNCOES += ../ethanol_functions/config_hostapd.o
@@ -72,6 +73,7 @@ OBJS_FUNCOES += ../ethanol_functions/wapi_txpower.o
 OBJS_FUNCOES += ../ethanol_functions/wapi_util.o
 OBJS_FUNCOES += ../ethanol_functions/wlan_info.o
 OBJS_FUNCOES += ../ethanol_functions/change_ap.o
+OBJS_FUNCOES += ../ethanol_functions/getmac.o
 
 
 OBJS = buffer_handler_fun.o ssl_common.o

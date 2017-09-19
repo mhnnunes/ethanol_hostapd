@@ -6,6 +6,7 @@
 #include "openssl/ssl.h"
 #include "ssl_common.h"
 
+#include "../ethanol_functions/utils_str.h"
 #include "../ethanol_functions/wapi_scan2.h"
 #include "../ethanol_functions/hostapd_hooks.h"
 

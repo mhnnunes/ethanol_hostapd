@@ -9,7 +9,7 @@
 
 /*
 
-Connected b8:a3:86:50:67:2e wlan0
+Connected to b8:a3:86:50:67:2e wlan0
   SSID: winet
   Freq: 2417
 RX: 6290 bytes 53 packets TX: 471 bytes 5 packets
@@ -45,9 +45,9 @@ iw_link_info_t * get_iw_link(char * intf_name) {
       if (line == NULL) break; // end of command output
 
       // find response line
-      if ((p=strstr(line,"Connected"))!=NULL) {
+      if ((p=strstr(line,"Connected to"))!=NULL) {
         char mac_address[50], intf_name[50];
-        sscanf(p, "Connected %s %s", (char *)&mac_address, (char *)&intf_name);
+        sscanf(p, "Connected to %s %s", (char *)&mac_address, (char *)&intf_name);
         iwl->connected = true;
         copy_string(&iwl->intf_name, intf_name);
         copy_string(&iwl->mac_address, mac_address);

@@ -16,7 +16,7 @@ double get_snr(char * intf_name) {
 
   if ((intf_name != NULL) && ((q = wapi_get_wifi_quality(intf_name)) != NULL)) {
     if (q->link_noise != 0) {
-     snr = q->link_level - q->link_noise;
+     snr = (q->link_level) - (q->link_noise);
      #ifdef DEBUG
       printf("Sinal: %fdB Ruído:%fdB SNR:%fdB\n", q->link_noise, q->link_level, snr);
      #endif

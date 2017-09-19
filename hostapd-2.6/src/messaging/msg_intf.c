@@ -5,6 +5,8 @@
 #include "openssl/ssl.h"
 #include "ssl_common.h"
 
+#include "../ethanol_functions/utils_str.h"
+
 #include "buffer_handler_fun.h"
 #include "msg_common.h"
 #include "msg_intf.h"
@@ -95,13 +97,10 @@ void process_msg_intf(char ** input, int input_len, char ** output, int * output
   struct msg_intf * h;
   decode_msg_intf(*input, input_len, &h);
 
-  printf("dentro de process_msg_intf\n");
-
   if (h->sta_ip == NULL) {
       /**************************************** FUNCAO LOCAL *************************/
 
       if (h->m_type == MSG_GET_ALL_INTF) {
-        printf("dentro de MSG_GET_ALL_INTF\n");
 
         // return all interfaces
         struct ioctl_interfaces * p = get_all_interfaces();

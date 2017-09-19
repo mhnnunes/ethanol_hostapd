@@ -4,7 +4,7 @@
 //#include "../Git/ethanol/hostapd/src/messaging/msg_common.h"
 
 #define VAL1 500 //ms
-#define VAL2 0
+#define VAL2 100
 
 struct interfaces intfs = {0, NULL, NULL};
 

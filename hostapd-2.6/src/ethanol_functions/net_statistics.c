@@ -236,7 +236,6 @@ void add_intf_net_statistics(char * intf_name) {
   while (p && (strcmp(p->intf_name, intf_name) != 0)) p = p->next;
   if (p == NULL) {
     p = malloc(sizeof(struct t_list_net_statistics));
-
     p->intf_name = malloc(sizeof(char) * (strlen(intf_name) + 1));
     strcpy(p->intf_name, intf_name);
     gettimeofday(&p->last_t, NULL);
@@ -341,10 +340,12 @@ int main () {
 
   printf("Setting time to 1s\n");
   set_timed_net_statistics(TO_MICROSECONDS); // 1s
+  sleep(10);
   print_all_mean_net_statistics();
 
   printf("\n\nAdding lo\n");
   add_intf_net_statistics("lo");
+  sleep(10);
   print_all_mean_net_statistics();
 
   printf("\n\nremoving lo\n");

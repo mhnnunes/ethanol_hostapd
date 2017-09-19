@@ -1,36 +1,36 @@
 // ----------------------------------------------------------------------------
 /**
    File: getmac.c
-  
+
    System:         Linux
-   Component Name: Ethanol, Netlink, getmacaddress 
-   Status:         Version 1.0 Release 1  
+   Component Name: Ethanol, Netlink, getmacaddress
+   Status:         Version 1.0 Release 1
    Language: C
-  
-   License: GNU Public License 
-  
+
+   License: GNU Public License
+
    Description: Este módulo obtem uma lista com as interfaces de rede e seus respectivos endereços ip
    				Mostra interfaces ethernet e wifi
 
    Limitations: funciona somente em ambiente linux com sockets
                 pode ser obtido também lendo /sys/class/net/<interface>/address
-  
+
    Function: 1) get_ip_address
-  
+
    Thread Safe: yes
-  
+
    Compiler Options: -DDEBUG ativa mensagens de debug e ativa main() para poder executar diretamente o módulo
-  
+
    Change History:                  (Sometimes called "Revisions")
    Date         Author       Description
    09/03/2015   Henrique     primeiro release
-*/ 
+*/
 #include <sys/ioctl.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <unistd.h>
 
-#include <net/if.h> 
+#include <net/if.h>
 #include <netinet/in.h>
 
 #include <string.h>
@@ -68,7 +68,7 @@ int get_ip_addresses_internal(struct addr_list *** addresses, char * intfname, b
 
     ifc.ifc_len = sizeof(buf);
     ifc.ifc_buf = buf;
-    if (ioctl(sock, SIOCGIFCONF, &ifc) == -1) { 
+    if (ioctl(sock, SIOCGIFCONF, &ifc) == -1) {
         /* handle error */
 #ifdef DEBUG
         fprintf(stderr, "Erro ao chamar ioctl\n");
@@ -189,10 +189,24 @@ void free_address(struct addr_list *** addresses, int n) {
     int i;
     for(i = 0; i < n; i++) {
         free((*addresses)[i]->intf);
-        free((*addresses)[i]->ip);        
+        free((*addresses)[i]->ip);
         free((*addresses)[i]);
     }
     free((*addresses));
     (*addresses) = NULL;
  }
 
+void clear_ip_from_interface(char * intfname) {
+  char buffer[1024];
+  char * ip = which_path('ip');
+  if (ip) {
+    sprintf (buffer, "%s addr flush dev %s", ip, intfname);
+    #ifdef DEBUG
+    int ret = system((const char *)&buffer);
+    printf("Calling ip - result %d\n", ret);
+    #else
+    system((const char *)&buffer);
+    #endif
+    free(ip);
+  }
+}

@@ -11,8 +11,8 @@ void set_path_to_iw(char * p) {
   path_to_iw = p;
 }
 
-char * get_path_to_iw(void) { 
-    return path_to_iw; 
+char * get_path_to_iw(void) {
+    return path_to_iw;
 }
 
 void set_path_to_iwconfig(char * p) {
@@ -115,7 +115,7 @@ int trigger_scan_intf(char * intf_name){
     last_call_trigger_scan = now;
     if (diff_t < MIN_TIME_BETWEEN_CALLS) return -2; // cannot call yet
   }
-  
+
   bool path_not_set = false;
   char * iw_path = get_path_to_iw();
   if (iw_path == NULL) {
