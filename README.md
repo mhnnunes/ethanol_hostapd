@@ -1,4 +1,4 @@
-# Agente Ethanol #
+# Ethanol agent #
 
 We have developed a docker container that allows the compilation and development of ethanol agents. This is the method we recommend for you to compile (and change) Ethanol. The container already makes the clone of this repository (ethanol_hostapd). To see more go to [ethanol_devel](https://github.com/h3dema/ethanol_devel)
 
