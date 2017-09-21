@@ -45,7 +45,7 @@ In addition we provide in the **doxygen** directory a series of html files with 
 
 ## Ethanol's hostapd ##
 
-### Instalar as dependências ###
+### Install dependencies ###
 
 We need to prepare the environment for the compilation and execution of ethanol.
 Some tools and libraries are required. Run the following commands to install them.
