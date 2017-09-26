@@ -1,10 +1,10 @@
-# ethanol.ini #
+# Ethanol's configuration#
 
 This directory contains the source code used to read ethanol's configuration file.
 This file must be named **ethanol.ini** and placed in the /etc directory.
 
 
-# File layout #
+# ethanol.ini - File layout #
 
 ";" are inline comments. All contents after this symbol til the newline are considered as comments.
 
