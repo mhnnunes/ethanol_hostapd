@@ -99,8 +99,8 @@ The installation of iw (from the source code) can be done with **make install**.
 ## Running ##
 
 To run Ethanol's hostapd you need to put in the same directory the following files:
-* the modified version of hostapd -- this file is generated in the (hostadp directory of this repository)[https://github.com/h3dema/ethanol_hostapd/tree/master/hostapd-2.6/hostapd].
-* the certificate -- you can use your own certificate or ours. You will find our in (certificate directory of this repository)[https://github.com/h3dema/ethanol_hostapd/tree/master/certificate]. In the README you will find instructions to generate your own file.
-* the modified version of iw -- You will find the source code in (iw-4.9 directory)[https://github.com/h3dema/ethanol_hostapd/tree/master/iw-4.9].
-* ethanol.ini -- this file should be copied to /etc directory. A sample file can be found in (src/ini)[https://github.com/h3dema/ethanol_hostapd/tree/master/hostapd-2.6/src/ini] directory in this repository.
+* the modified version of hostapd -- this file is generated in the [hostadp directory of this repository](https://github.com/h3dema/ethanol_hostapd/tree/master/hostapd-2.6/hostapd).
+* the certificate -- you can use your own certificate or ours. You will find our in [certificate directory of this repository](https://github.com/h3dema/ethanol_hostapd/tree/master/certificate). In the README you will find instructions to generate your own file.
+* the modified version of iw -- You will find the source code in [iw-4.9 directory](https://github.com/h3dema/ethanol_hostapd/tree/master/iw-4.9).
+* ethanol.ini -- this file should be copied to /etc directory. A sample file can be found in [src/ini](https://github.com/h3dema/ethanol_hostapd/tree/master/hostapd-2.6/src/ini) directory in this repository.
 
