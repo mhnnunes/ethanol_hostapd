@@ -1,4 +1,4 @@
-# Ethanol's configuration#
+# Ethanol's configuration #
 
 This directory contains the source code used to read ethanol's configuration file.
 This file must be named **ethanol.ini** and placed in the /etc directory.
