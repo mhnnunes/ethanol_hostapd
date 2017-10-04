@@ -45,10 +45,11 @@ struct traffic_indication_map {
   struct beacon_country country;
 };
 
-struct beacon_received {
+typedef struct beacon_received {
   long long beacon_interval;
   long capabilities;
   char * ssid;
+  unsigned char addr[6];
   int channel;
 
   unsigned int num_rates; // number of elements in rates[]
@@ -58,9 +59,9 @@ struct beacon_received {
   unsigned int fh_parameters;
   unsigned int fh_pattern_table;
 
-  unsigned long ds_parameter; // 3 byte field: id, length, current channel
+  unsigned char ds_parameter[3]; // 3 byte field: id, length, current channel
   long long cf_parameter;
-  long ibss_parameter; // 4 byte field: id, length, ATIM window
+  unsigned char ibss_parameter[4]; // 4 byte field: id, length, ATIM window
 
   struct beacon_country country;
 
@@ -83,26 +84,26 @@ struct beacon_received {
   unsigned int EDCA_Parameter_Set;
   unsigned int qos_capability;
 
-  long long mobility_domain; // 802.11r
-  struct ht_capability ht;  // 802.11n
+  long long mobility_domain; // 802.11r --> struct rsn_mdie
+  struct ht_capability ht;  // 802.11n --> struct ieee80211_ht_capabilities
 
   // TODO: fill other mandatory fields
   // http://mrncciew.com/2014/10/08/802-11-mgmt-beacon-frame/
-};
+} beacon_received;
 
 
 //  ************************** MSG_INFORM_BEACON ********************************
 
 /* message structure */
-struct msg_beaconinfo {
+typedef struct msg_beaconinfo {
    int m_type;
    int m_id;
    char * p_version;
    int m_size;
 
    unsigned int num_beacons; // number of elements in b[]
-   struct beacon_received ** b;
-};
+   beacon_received ** b;
+} msg_beaconinfo;
 
 /**
  * @Controller
@@ -116,11 +117,11 @@ void process_msg_beaconinfo(char ** input, int input_len, char ** output, int * 
 
  if returns a not zero value --> error
  */
-int send_msg_beaconinfo(char * hostname, int portnum, int * id, struct msg_beaconinfo * bi);
+int send_msg_beaconinfo(char * hostname, int portnum, int * id, msg_beaconinfo * bi);
 
-void free_beacon_received(struct beacon_received * b);
-void free_msg_beaconinfo(struct msg_beaconinfo * b);
+void free_beacon_received(beacon_received * b);
+void free_msg_beaconinfo(msg_beaconinfo * b);
 
-void print_msg_beaconinfo(struct msg_beaconinfo * b);
+void print_msg_beaconinfo(msg_beaconinfo * b);
 
 #endif

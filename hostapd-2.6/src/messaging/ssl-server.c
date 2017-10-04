@@ -98,6 +98,7 @@
 #include "msg_changed_ap.h"
 #include "msg_mean_sta_stats.h"
 #include "msg_station_trigger_transition.h"
+#include "msg_tos.h"
 
 
 #define DEBUG_SERVLET
@@ -795,7 +796,31 @@ void servlet(SSL* ssl, char * client_addr, int client_port) {
             break;
 
         case MSG_TRIGGER_TRANSITION:
+            #ifdef DEBUG_SERVLET
+               printf("Receiving MSG_TRIGGER_TRANSITION message from %s\n", client_addr);
+            #endif
             process_msg_station_trigger_transition(&input_msg, input_len, &reply, &reply_len);
+            break;
+
+        case MSG_TOS_CLEANALL:
+            #ifdef DEBUG_SERVLET
+               printf("Receiving MSG_TOS_CLEANALL message from %s\n", client_addr);
+            #endif
+            process_msg_tos_cleanall(&input_msg, input_len, &reply, &reply_len);
+            break;
+
+        case MSG_TOS_ADD:
+            #ifdef DEBUG_SERVLET
+               printf("Receiving MSG_TOS_ADD message from %s\n", client_addr);
+            #endif
+            process_msg_tos_add(&input_msg, input_len, &reply, &reply_len);
+            break;
+
+        case MSG_TOS_REPLACE:
+            #ifdef DEBUG_SERVLET
+               printf("Receiving MSG_TOS_REPLACE message from %s\n", client_addr);
+            #endif
+            process_msg_tos_replace(&input_msg, input_len, &reply, &reply_len);
             break;
 
         default:  //unknown messages
@@ -876,7 +901,6 @@ void run_ethanol_server(ethanol_configuration * config) {
     // set global variables
     conffile_hostapd = malloc(sizeof(char) * (strlen(CONFFILE_HOSTAPD)+1));
     strcpy(conffile_hostapd, CONFFILE_HOSTAPD);
-
     while (1) {
         struct sockaddr_in addr;
         socklen_t len = sizeof(addr);

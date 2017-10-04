@@ -20,6 +20,8 @@
 #include <time.h>
 #include <stdlib.h> // random
 
+#include "../ethanol_functions/utils_str.h"
+
 #include "msg_802_11e_enabled.h"
 #include "msg_ap_broadcastssid.h"
 #include "msg_ap_ctsprotection_enabled.h"
@@ -87,8 +89,9 @@
 #include "msg_acs.h"
 #include "msg_mean_sta_stats.h"
 #include "msg_changed_ap.h"
+#include "msg_tos.h"
 
-#define NUM_TIPOS_MENSAGENS_STR 122
+#define NUM_TIPOS_MENSAGENS_STR 125
 char * todas_opcoes[] = {
 "MSG_HELLO_TYPE",
 "MSG_BYE_TYPE",
@@ -211,7 +214,11 @@ char * todas_opcoes[] = {
 "MSG_MEAN_STA_STATISTICS_REMOVE_INTERFACE",
 "MSG_MEAN_STA_STATISTICS_SET_ALPHA",
 "MSG_MEAN_STA_STATISTICS_SET_TIME",
-"MSG_CHANGED_AP"   };
+"MSG_CHANGED_AP",
+"MSG_TOS_CLEANALL",
+"MSG_TOS_ADD",
+"MSG_TOS_REPLACE"
+};
 
 void call_msg_get_sta_statistics(char * hostname, int portnum, int * m_id, char * intf_name, char * sta_ip, int sta_port) {
   msg_sta_statitics * h = send_msg_get_sta_statistics(hostname, portnum, m_id, intf_name, sta_ip, sta_port);
@@ -932,7 +939,7 @@ void call_msg_beaconinfo(char *hostname, int portnum, int *m_id) {
     #define SSID "teste"
     b->ssid = malloc((strlen(SSID) + 1) * sizeof(char));
     strcpy(b->ssid, SSID);
-
+    memset(&b->addr, 0, sizeof(b->addr));
     b->channel = 1;
 
     b->num_rates = 3;
@@ -949,9 +956,9 @@ void call_msg_beaconinfo(char *hostname, int portnum, int *m_id) {
     b->fh_parameters = 20;
     b->fh_pattern_table = 30;
 
-    b->ds_parameter = 10;
+    memset(&b->ds_parameter, 0, sizeof(b->ds_parameter));
     b->cf_parameter = 11;
-    b->ibss_parameter = 12;
+    memset(&b->ibss_parameter, 0, sizeof(b->ibss_parameter));
 
     b->country.country_code = 100;
     b->country.environment = 101;
@@ -1784,7 +1791,7 @@ int main(int argc, char *argv[]) {
       case MSG_MEAN_STA_STATISTICS_GET:{
           msg_mean_sta_statistics * h = send_msg_mean_sta_statistics(hostname, portnum, &m_id, NULL, 0);
           print_msg_mean_sta_statistics(h);
-          free_msg_mean_sta_statistics(h);
+          free_msg_mean_sta_statistics(&h);
           break;
       }
       case MSG_MEAN_STA_STATISTICS_SET_INTERFACE:{
@@ -1817,7 +1824,25 @@ int main(int argc, char *argv[]) {
           int status = 1; // ok
           char * current_ap = "b0:aa:ab:ab:ac:03"; // storm
           send_msg_changed_ap(hostname, portnum, &m_id, status, current_ap, INTERFACE_WLAN);
-                break;
+          break;
+      }
+      case MSG_TOS_CLEANALL: {
+          send_msg_tos_cleanall(hostname, portnum, &m_id);
+          break;
+      }
+      case MSG_TOS_ADD: {
+          send_msg_tos_add(hostname, portnum, &m_id,
+                      INTERFACE_WLAN, "udp", NULL, NULL, NULL, "5001", 1); // AC_BK
+          sleep(1);
+          send_msg_tos_add(hostname, portnum, &m_id,
+                      INTERFACE_WLAN, "udp", NULL, NULL, NULL, "5002", 0); // AC_BE
+          sleep(1);
+          break;
+      }
+      case MSG_TOS_REPLACE: {
+          send_msg_tos_replace(hostname, portnum, &m_id,
+                               1, INTERFACE_WLAN, "udp", NULL, NULL, NULL, "5001", 4); // AC_VI
+          break;
       }
       default:
     		printf("Opção [%s] inválida!\n\n", opcao_lida);

@@ -17,7 +17,14 @@
 /*************** msg_mean_sta_statistics **************/
 
 void print_msg_mean_sta_statistics(msg_mean_sta_statistics * h){
-  if (h == NULL) return;
+  if (h == NULL){
+    printf("Mensagem nula\n");
+    return;
+  }
+  if(h->v == NULL){
+    printf("Struct all_mean_net_statistics nula\n");
+    return;
+  }
   int i;
   for(i = 0; i < h->v->num; i++) {
       printf("Interface %s:\n",h->v->intfs[i]);
@@ -105,16 +112,19 @@ void decode_msg_mean_sta_statistics(char * buf, int buf_len, msg_mean_sta_statis
   decode_header(&aux, &(*h)->m_type, &(*h)->m_id,  &(*h)->m_size, &(*h)->p_version);
   decode_char(&aux, &(*h)->sta_ip);
   decode_int(&aux, &(*h)->sta_port);
-  (*h)->v = malloc(sizeof(all_mean_net_statistics));
-  decode_int(&aux, &(*h)->v->num);
-  int n = (*h)->v->num;
-  if (n > 0) {
+  int n;
+  decode_int(&aux, &n);
+  if (n == 0) {
+    (*h)->v = NULL;
+  } else {
+    (*h)->v = malloc(sizeof(all_mean_net_statistics));
+    (*h)->v->num = n;
     (*h)->v->intfs = malloc(n * sizeof(char *));
-    (*h)->v->ns = malloc(n * sizeof(mean_net_statistics));
     int i;
     for(i = 0; i < n; i++) {
         decode_char(&aux, &(*h)->v->intfs[i]);
     }
+    (*h)->v->ns = malloc(n * sizeof(mean_net_statistics));
     for(i = 0; i < n; i++) {
         decode_longdouble(&aux, &(*h)->v->ns[i].collisions);
         decode_longdouble(&aux, &(*h)->v->ns[i].multicast);
@@ -143,23 +153,25 @@ void decode_msg_mean_sta_statistics(char * buf, int buf_len, msg_mean_sta_statis
   }
 }
 
-void free_msg_mean_sta_statistics(msg_mean_sta_statistics * m){
-  if (m == NULL) return;
-  if (m->p_version) free(m->p_version);
-  if (m->sta_ip) free(m->sta_ip);
-  if (m->v) {
-    if (m->v->num > 0) {
-        int i;
-        for(i = 0; i < m->v->num; i++) {
-            if (m->v->intfs[i]) free(m->v->intfs[i]);
-        }
+void free_msg_mean_sta_statistics(msg_mean_sta_statistics ** m){
+  if (m == NULL || *m == NULL) return;
+  if ((*m)->p_version) free((*m)->p_version);
+  if ((*m)->sta_ip) free((*m)->sta_ip);
+  if ((*m)->v) {
+    if ((*m)->v->intfs){
+      if ((*m)->v->num > 0) {
+          int i;
+          for(i = 0; i < (*m)->v->num; i++) {
+              if ((*m)->v->intfs[i]) free((*m)->v->intfs[i]);
+          }
+      }
+      free((*m)->v->intfs);
     }
-    if (m->v->intfs) free(m->v->intfs);
-    if (m->v->ns) free(m->v->ns);
-    free(m->v);
+    if ((*m)->v->ns) free((*m)->v->ns);
+    free((*m)->v);
   }
-  free(m);
-  m = NULL;
+  free((*m));
+  (*m) = NULL;
 }
 
 
@@ -183,7 +195,6 @@ msg_mean_sta_statistics * send_msg_mean_sta_statistics(char * hostname, int port
     h.sta_port = sta_port;
 
     h.m_size = size_msg_mean_sta_statistics(&h);
-
     encode_msg_mean_sta_statistics(&h, &buffer, &bytes);
     SSL_write(h_ssl.ssl, buffer, bytes);   // encrypt & send message
     #ifdef DEBUG
@@ -432,7 +443,8 @@ void process_msg_mean_sta_statistics(char ** input, int input_len, char ** outpu
         case MSG_MEAN_STA_STATISTICS_GET: {
           msg_mean_sta_statistics * h1;
           decode_msg_mean_sta_statistics(*input, input_len, &h1);
-          if (h1->v) free_all_mean_net_statistics(h1->v);
+          if (h1->v) free_all_mean_net_statistics(&h1->v);
+          h1->v = NULL;
           h1->v = get_all_mean_net_statistics();
           encode_msg_mean_sta_statistics(h1, output, output_len);
           break;

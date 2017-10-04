@@ -19,6 +19,7 @@
     #include "../ethanol_functions/time_stamp.h"
     #include "../ethanol_functions/iw_link.h"
     #include "../ethanol_functions/change_ap.h"
+    #include "../ethanol_functions/getmac.h"
 
     #include "msg_set_snr_interval.h"
     #include "msg_set_snr_threshold.h"
@@ -126,40 +127,39 @@ int main(int argc, char * argv[]) {
             long long snr_t = get_snr_threshold(intf_name_snr);
             printf("TRESH:%lld\n", snr_t);
             if (snr <= snr_t) {
-                iw_link_info_t * iwl = get_iw_link(intf_name_snr);
-                char * mac, * mc;
-                mac = NULL;
-                mc = "34:23:87:77:0d:2f";
-                mac = (char *) malloc((strlen(mc)+1)*sizeof(char));
-                strcpy(mac, mc);
+                iw_link_info_t * iwl;
+                t_addr_list * maclist;
+
+                iwl = get_iw_link(intf_name_snr);
+                maclist = getmacaddress(intf_name_snr);
                 if (iwl) {
+                    struct msg_snr_threshold_reached * m;
                     // iwl->mac_address => current ap mac_address
-                    struct msg_snr_threshold_reached * m = send_msg_snr_threshold_reached(config.server_addr, config.remote_server_port, &id, NULL, 0,
-                                                              mac, intf_name_snr,
+                    m = send_msg_snr_threshold_reached(config.server_addr, config.remote_server_port, &id, NULL, 0,
+                                                              maclist->mac, intf_name_snr,
                                                               iwl->mac_address,
                                                               snr);
-                    printf("após o send\n");
                     if (m) {
-                        printf("macap %s iwlmac %s\n", m->mac_ap, iwl->mac_address);
+                        printf("macap %s iwlmac %s\n\n\n", m->mac_ap, iwl->mac_address);
+                        sleep(5);
                         if (strcmp(m->mac_ap, iwl->mac_address) != 0) {
-                        printf("Entrou no if\n");
                             // controller returned another MAC address, so change to the new AP
                             int status = roam_change_ap(intf_name_snr, m->mac_ap); // m->mac_ap = new ap
                             if (status == 0) {
-                            printf("Status 0\n");
                                 // station informs controller that it could change to another AP
                                 send_msg_changed_ap(config.server_addr, config.remote_server_port, &id, status, m->mac_ap, intf_name_snr);
                             } else {
-                            printf("Status else\n");
 
                                 // inform failure
                                 send_msg_changed_ap(config.server_addr, config.remote_server_port, &id, status, iwl->mac_address, intf_name_snr);
                             }
+                            sleep(15);
                         }
                         free_msg_snr_threshold_reached(&m);
                     }
                     free_iw_link_info_t(&iwl);
                 }
+                free_struct_addr_list(&maclist);
             }
             // wait the rest of snr_interval seconds to another round
             long long t_interval = get_snr_interval(intf_name_snr) / 1000.0; // in seconds

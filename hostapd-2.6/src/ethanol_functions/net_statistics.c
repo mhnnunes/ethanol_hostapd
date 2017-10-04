@@ -12,9 +12,11 @@
 
 struct t_list_net_statistics {
     char * intf_name;
-    net_statistics initial;
-    mean_net_statistics mean;
+
+    net_statistics current_value;
     struct timeval last_t;
+
+    mean_net_statistics mean;
     struct t_list_net_statistics * next;
 };
 
@@ -66,7 +68,7 @@ void print_all_mean_net_statistics(void) {
     printf("[%d] Interface: %s\n", i, r->intfs[i]);
     print_mean_statistics(&r->ns[i]);
   }
-  free_all_mean_net_statistics(r);
+  free_all_mean_net_statistics(&r);
 }
 #endif
 
@@ -149,30 +151,30 @@ void update_means(void) {
 
     if (diff_t > 0) {
       // calculate mean using ewma
-      p->mean.collisions = calculate_ewma(now_stats.collisions, p->initial.collisions, diff_t, p->mean.collisions);
-      p->mean.multicast = calculate_ewma(now_stats.multicast, p->initial.multicast, diff_t, p->mean.multicast);
-      p->mean.rx_bytes = calculate_ewma(now_stats.rx_bytes, p->initial.rx_bytes, diff_t, p->mean.rx_bytes);
-      p->mean.rx_compressed = calculate_ewma(now_stats.rx_compressed, p->initial.rx_compressed, diff_t, p->mean.rx_compressed);
-      p->mean.rx_crc_errors = calculate_ewma(now_stats.rx_crc_errors, p->initial.rx_crc_errors, diff_t, p->mean.rx_crc_errors);
-      p->mean.rx_dropped = calculate_ewma(now_stats.rx_dropped, p->initial.rx_dropped, diff_t, p->mean.rx_dropped);
-      p->mean.rx_errors = calculate_ewma(now_stats.rx_errors, p->initial.rx_errors, diff_t, p->mean.rx_errors);
-      p->mean.rx_fifo_errors = calculate_ewma(now_stats.rx_fifo_errors, p->initial.rx_fifo_errors, diff_t, p->mean.rx_fifo_errors);
-      p->mean.rx_frame_errors = calculate_ewma(now_stats.rx_frame_errors, p->initial.rx_frame_errors, diff_t, p->mean.rx_frame_errors);
-      p->mean.rx_length_errors = calculate_ewma(now_stats.rx_length_errors, p->initial.rx_length_errors, diff_t, p->mean.rx_length_errors);
-      p->mean.rx_missed_errors = calculate_ewma(now_stats.rx_missed_errors, p->initial.rx_missed_errors, diff_t, p->mean.rx_missed_errors);
-      p->mean.rx_over_errors = calculate_ewma(now_stats.rx_over_errors, p->initial.rx_over_errors, diff_t, p->mean.rx_over_errors);
-      p->mean.tx_aborted_errors = calculate_ewma(now_stats.tx_aborted_errors, p->initial.tx_aborted_errors, diff_t, p->mean.tx_aborted_errors);
-      p->mean.tx_bytes = calculate_ewma(now_stats.tx_bytes, p->initial.tx_bytes, diff_t, p->mean.tx_bytes);
-      p->mean.tx_carrier_errors = calculate_ewma(now_stats.tx_carrier_errors, p->initial.tx_carrier_errors, diff_t, p->mean.tx_carrier_errors);
-      p->mean.tx_compressed = calculate_ewma(now_stats.tx_compressed, p->initial.tx_compressed, diff_t, p->mean.tx_compressed);
-      p->mean.tx_dropped = calculate_ewma(now_stats.tx_dropped, p->initial.tx_dropped, diff_t, p->mean.tx_dropped);
-      p->mean.tx_errors = calculate_ewma(now_stats.tx_errors, p->initial.tx_errors, diff_t, p->mean.tx_errors);
-      p->mean.tx_fifo_errors = calculate_ewma(now_stats.tx_fifo_errors, p->initial.tx_fifo_errors, diff_t, p->mean.tx_fifo_errors);
-      p->mean.tx_heartbeat_errors = calculate_ewma(now_stats.tx_heartbeat_errors, p->initial.tx_heartbeat_errors, diff_t, p->mean.tx_heartbeat_errors);
-      p->mean.tx_window_errors = calculate_ewma(now_stats.tx_window_errors, p->initial.tx_window_errors, diff_t, p->mean.tx_window_errors);
+      p->mean.collisions = calculate_ewma(now_stats.collisions, p->current_value.collisions, diff_t, p->mean.collisions);
+      p->mean.multicast = calculate_ewma(now_stats.multicast, p->current_value.multicast, diff_t, p->mean.multicast);
+      p->mean.rx_bytes = calculate_ewma(now_stats.rx_bytes, p->current_value.rx_bytes, diff_t, p->mean.rx_bytes);
+      p->mean.rx_compressed = calculate_ewma(now_stats.rx_compressed, p->current_value.rx_compressed, diff_t, p->mean.rx_compressed);
+      p->mean.rx_crc_errors = calculate_ewma(now_stats.rx_crc_errors, p->current_value.rx_crc_errors, diff_t, p->mean.rx_crc_errors);
+      p->mean.rx_dropped = calculate_ewma(now_stats.rx_dropped, p->current_value.rx_dropped, diff_t, p->mean.rx_dropped);
+      p->mean.rx_errors = calculate_ewma(now_stats.rx_errors, p->current_value.rx_errors, diff_t, p->mean.rx_errors);
+      p->mean.rx_fifo_errors = calculate_ewma(now_stats.rx_fifo_errors, p->current_value.rx_fifo_errors, diff_t, p->mean.rx_fifo_errors);
+      p->mean.rx_frame_errors = calculate_ewma(now_stats.rx_frame_errors, p->current_value.rx_frame_errors, diff_t, p->mean.rx_frame_errors);
+      p->mean.rx_length_errors = calculate_ewma(now_stats.rx_length_errors, p->current_value.rx_length_errors, diff_t, p->mean.rx_length_errors);
+      p->mean.rx_missed_errors = calculate_ewma(now_stats.rx_missed_errors, p->current_value.rx_missed_errors, diff_t, p->mean.rx_missed_errors);
+      p->mean.rx_over_errors = calculate_ewma(now_stats.rx_over_errors, p->current_value.rx_over_errors, diff_t, p->mean.rx_over_errors);
+      p->mean.tx_aborted_errors = calculate_ewma(now_stats.tx_aborted_errors, p->current_value.tx_aborted_errors, diff_t, p->mean.tx_aborted_errors);
+      p->mean.tx_bytes = calculate_ewma(now_stats.tx_bytes, p->current_value.tx_bytes, diff_t, p->mean.tx_bytes);
+      p->mean.tx_carrier_errors = calculate_ewma(now_stats.tx_carrier_errors, p->current_value.tx_carrier_errors, diff_t, p->mean.tx_carrier_errors);
+      p->mean.tx_compressed = calculate_ewma(now_stats.tx_compressed, p->current_value.tx_compressed, diff_t, p->mean.tx_compressed);
+      p->mean.tx_dropped = calculate_ewma(now_stats.tx_dropped, p->current_value.tx_dropped, diff_t, p->mean.tx_dropped);
+      p->mean.tx_errors = calculate_ewma(now_stats.tx_errors, p->current_value.tx_errors, diff_t, p->mean.tx_errors);
+      p->mean.tx_fifo_errors = calculate_ewma(now_stats.tx_fifo_errors, p->current_value.tx_fifo_errors, diff_t, p->mean.tx_fifo_errors);
+      p->mean.tx_heartbeat_errors = calculate_ewma(now_stats.tx_heartbeat_errors, p->current_value.tx_heartbeat_errors, diff_t, p->mean.tx_heartbeat_errors);
+      p->mean.tx_window_errors = calculate_ewma(now_stats.tx_window_errors, p->current_value.tx_window_errors, diff_t, p->mean.tx_window_errors);
 
       // save actual stats
-      memcpy(&p->initial, &now_stats, sizeof(now_stats));
+      memcpy(&p->current_value, &now_stats, sizeof(now_stats)); // copy values read now to current_value
       memcpy(&p->last_t, &t_now, sizeof(t_now));
     }
     p = p->next;
@@ -239,7 +241,7 @@ void add_intf_net_statistics(char * intf_name) {
     p->intf_name = malloc(sizeof(char) * (strlen(intf_name) + 1));
     strcpy(p->intf_name, intf_name);
     gettimeofday(&p->last_t, NULL);
-    get_statistics_local(intf_name, &p->initial);
+    get_statistics_local(intf_name, &p->current_value);
     memset(&p->mean, 0, sizeof(p->mean));
     #ifdef DEBUG
     print_mean_statistics(&p->mean);
@@ -312,15 +314,19 @@ all_mean_net_statistics * get_all_mean_net_statistics() {
 }
 
 /** frees an allocated all_mean_net_statistics structure */
-void free_all_mean_net_statistics(all_mean_net_statistics * m) {
-  if (m == NULL) return;
+void free_all_mean_net_statistics(all_mean_net_statistics ** m) {
+  if ((*m) == NULL) return;
   int i;
-  for(i = 0; i<m->num; i++) {
-    if (m->intfs[i]) free(m->intfs[i]);
+  if((*m)->intfs){
+    for(i = 0; i<(*m)->num; i++) {
+      if ((*m)->intfs[i]) free((*m)->intfs[i]);
+    }
+    free((*m)->intfs);
   }
-  free(m->intfs);
-  free(m->ns);
-  free(m);
+  if((*m)->ns) free((*m)->ns);
+  free((*m));
+  (*m) = NULL;
+  m = NULL;
 }
 
 

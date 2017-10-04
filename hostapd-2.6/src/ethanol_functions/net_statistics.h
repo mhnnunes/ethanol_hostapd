@@ -65,6 +65,6 @@ typedef struct all_mean_net_statistics {
 all_mean_net_statistics * get_all_mean_net_statistics(void);
 
 /** frees an allocated all_mean_net_statistics structure */
-void free_all_mean_net_statistics(all_mean_net_statistics * m);
+void free_all_mean_net_statistics(all_mean_net_statistics ** m);
 
 #endif

@@ -113,6 +113,7 @@ OBJS+= msg_snr_threshold_reached.o
 OBJS+= msg_changed_ap.o
 OBJS+= msg_mean_sta_stats.o
 OBJS+= msg_station_trigger_transition.o
+OBJS+= msg_tos.o
 
 PROG = ethanol_station ethanol_client ethanol_server
 

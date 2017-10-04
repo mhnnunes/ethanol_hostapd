@@ -148,8 +148,11 @@ enum Enum_msg_type {
   MSG_MEAN_STA_STATISTICS_SET_INTERFACE,
   MSG_MEAN_STA_STATISTICS_REMOVE_INTERFACE,
   MSG_MEAN_STA_STATISTICS_SET_ALPHA, // set alpha for EWMA
-  MSG_MEAN_STA_STATISTICS_SET_TIME, // set time between measurements for mean stats
-  MSG_CHANGED_AP // informe the controller that station changed ap
+  MSG_MEAN_STA_STATISTICS_SET_TIME,  // set time between measurements for mean stats
+  MSG_CHANGED_AP,                    // inform the controller that station changed ap
+  MSG_TOS_CLEANALL,
+  MSG_TOS_ADD,
+  MSG_TOS_REPLACE
 };
 
 

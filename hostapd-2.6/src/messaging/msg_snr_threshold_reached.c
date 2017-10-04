@@ -18,7 +18,7 @@
     #include "list_stations.h"
     #include "msg_ap_in_range.h"
     #include "msg_mean_sta_stats.h"
-    #define DEFAULT_SIGNAL_THRESHOLD -65
+    #define DEFAULT_SIGNAL_THRESHOLD -90
 
     long long signal_threshold = DEFAULT_SIGNAL_THRESHOLD;
 
@@ -107,11 +107,14 @@ void process_msg_snr_threshold_reached(char ** input, int input_len, char ** out
                 int i;
                 for(i = 0; i < l_aps->num_aps; i++) {
                     // keep only ethanol enabled aps
-                    printf("macap %s hmacap %s\n", l_aps->aps[i].mac_ap, h->mac_ap);
+                    ap=find_ap(l_aps->aps[i].mac_ap);
+
+                    if(ap)
                     if (strcmp(l_aps->aps[i].mac_ap, h->mac_ap)!=0 && // ap is not the current ap
                         (ap=find_ap(l_aps->aps[i].mac_ap)) && ((long long) l_aps->aps[i].signal > signal_threshold))           // ap is in ethanol's list
                     {
-                        // insert into aps_range
+
+                        // insert into aps_range,
                         insert_ap_range(i, ap, &aps_range);
                     }
                 }
@@ -123,7 +126,7 @@ void process_msg_snr_threshold_reached(char ** input, int input_len, char ** out
                         if (m) {
                           p->tx = m->v->ns[0].tx_bytes;
                           p->rx = m->v->ns[0].rx_bytes;
-                          free_msg_mean_sta_statistics(m);
+                          free_msg_mean_sta_statistics(&m);
                         } else {
                           p->tx = -1; // error reading info
                         }

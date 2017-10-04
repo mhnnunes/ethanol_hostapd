@@ -74,7 +74,7 @@ void send_msg_mean_sta_statistics_interface_remove(char * hostname, int portnum,
 void send_msg_mean_sta_statistics_alpha(char * hostname, int portnum, int * id, char * sta_ip, int sta_port, long double alpha);
 void send_msg_mean_sta_statistics_time(char * hostname, int portnum, int * id, char * sta_ip, int sta_port, int msec);
 
-void free_msg_mean_sta_statistics(msg_mean_sta_statistics * m);
+void free_msg_mean_sta_statistics(msg_mean_sta_statistics ** m);
 
 void print_msg_mean_sta_statistics(msg_mean_sta_statistics * h);
 

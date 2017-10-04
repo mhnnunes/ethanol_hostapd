@@ -14,7 +14,7 @@
 
 //  ************************** MSG_INFORM_BEACON ********************************
 
-unsigned long message_size_beaconinfo(struct msg_beaconinfo * h) {
+unsigned long message_size_beaconinfo(msg_beaconinfo * h) {
   unsigned long size = strlen_ethanol(h->p_version) + sizeof(h->m_type) + sizeof(h->m_size) + sizeof(h->m_id) +
                        sizeof(h->num_beacons);
   int i;
@@ -24,12 +24,13 @@ unsigned long message_size_beaconinfo(struct msg_beaconinfo * h) {
     size += sizeof(b->beacon_interval)+
             sizeof(b->capabilities)+
             strlen_ethanol(b->ssid)+
+            sizeof(b->addr)+
             sizeof(b->channel)+
             sizeof(b->num_rates);
 
     struct supported_rates * r = &b->rates[0]; // TODO: conferir se isto funciona, pois pode não haver rates[0]
-    size += b->num_rates * (sizeof(r->id)+ sizeof(r->rate)+ sizeof(int)); // basic_rate is bool, as coded as "int" 
-            
+    size += b->num_rates * (sizeof(r->id)+ sizeof(r->rate)+ sizeof(int)); // basic_rate is bool, as coded as "int"
+
     size += sizeof(b->fh_parameter)+
             sizeof(b->fh_parameters)+
             sizeof(b->fh_pattern_table)+
@@ -42,7 +43,7 @@ unsigned long message_size_beaconinfo(struct msg_beaconinfo * h) {
 
     struct beacon_channels * c = &b->country.c[0]; // TODO: mesma verificação acima
     size += b->country.num_beacon_channels * (sizeof(c->starting_channel)+sizeof(c->num_channels)+sizeof(c->max_tx_power));
-            
+
     size += sizeof(b->power_constraint)+
             sizeof(b->channel_switch)+
             sizeof(b->quite_time)+
@@ -56,7 +57,7 @@ unsigned long message_size_beaconinfo(struct msg_beaconinfo * h) {
             sizeof(b->rsn.pairwise_cipher_count) + b->rsn.pairwise_cipher_count * sizeof(long long) + // each pairwise_cipher_oui is a long long
             sizeof(b->rsn.authkey_count) + b->rsn.authkey_count * sizeof(long long) + // each akmp_suite_oui is a long long
             sizeof(b->rsn.rsn_capabilities) +
-            sizeof(b->rsn.pmkid_count) + b->rsn.pmkid_count * sizeof(long long) + // each pmkid is a long long         
+            sizeof(b->rsn.pmkid_count) + b->rsn.pmkid_count * sizeof(long long) + // each pmkid is a long long
             sizeof(b->station_count)+
             sizeof(b->channel_utilization)+
             sizeof(b->avail_admission_capacity)+
@@ -75,7 +76,7 @@ unsigned long message_size_beaconinfo(struct msg_beaconinfo * h) {
 }
 
 
-void encode_msg_beaconinfo(struct msg_beaconinfo * h, char ** buf, int * buf_len) {
+void encode_msg_beaconinfo(msg_beaconinfo * h, char ** buf, int * buf_len) {
   *buf_len = message_size_beaconinfo(h);
   *buf = malloc(*buf_len);
   char * aux = *buf;
@@ -83,31 +84,34 @@ void encode_msg_beaconinfo(struct msg_beaconinfo * h, char ** buf, int * buf_len
 
   encode_header(&aux, h->m_type, h->m_id, h->m_size);
   encode_uint(&aux, h->num_beacons);
-  int i;
+  int i, j;
   for(i=0; i < h->num_beacons; i++){
     struct beacon_received * b = h->b[i];
 
     encode_2long(&aux, b->beacon_interval);
     encode_long(&aux, b->capabilities);
     encode_char(&aux, b->ssid);
+    for(j = 0; j < sizeof(b->addr); j++)
+      encode_byte(&aux, b->addr[j]);
     encode_int(&aux, b->channel);
     encode_uint(&aux, b->num_rates);
 
-    int j;
     for(j=0; j < b->num_rates; j++) {
       struct supported_rates * r = &b->rates[j];
       encode_uint(&aux, r->id);
       encode_uint(&aux, r->rate);
-      encode_bool(&aux, r->basic_rate);      
+      encode_bool(&aux, r->basic_rate);
     }
-            
+
     encode_uint(&aux, b->fh_parameter);
     encode_uint(&aux, b->fh_parameters);
     encode_uint(&aux, b->fh_pattern_table);
 
-    encode_ulong(&aux, b->ds_parameter);
+    for(j = 0; j < sizeof(b->ds_parameter); j++)
+      encode_byte(&aux, b->ds_parameter[j]);
     encode_2long(&aux, b->cf_parameter);
-    encode_long(&aux, b->ibss_parameter);
+    for(j = 0; j < sizeof(b->ibss_parameter); j++)
+      encode_byte(&aux, b->ibss_parameter[j]);
 
     encode_uint(&aux, b->country.country_code);
     encode_int(&aux, b->country.environment);
@@ -165,9 +169,9 @@ void encode_msg_beaconinfo(struct msg_beaconinfo * h, char ** buf, int * buf_len
   }
 }
 
-void decode_msg_beaconinfo(char * buf, int buf_len, struct msg_beaconinfo ** h) {
+void decode_msg_beaconinfo(char * buf, int buf_len, msg_beaconinfo ** h) {
 
-  struct msg_beaconinfo * m = malloc(sizeof(struct msg_beaconinfo));
+  msg_beaconinfo * m = malloc(sizeof(msg_beaconinfo));
   *h = m; // return message
 
   char * aux = buf;
@@ -177,35 +181,38 @@ void decode_msg_beaconinfo(char * buf, int buf_len, struct msg_beaconinfo ** h) 
   if (m->num_beacons == 0) {
     m->b = NULL;
   } else {
-    m->b = malloc(m->num_beacons * sizeof(struct beacon_received *));
-    int i;
+    m->b = malloc(m->num_beacons * sizeof(beacon_received *));
+    int i, j;
     for(i=0; i < m->num_beacons; i++){
       // decode each beacon
-      struct beacon_received * b = malloc(sizeof(struct beacon_received));
+      struct beacon_received * b = malloc(sizeof(beacon_received));
       m->b[i] = b;
-      
+
       decode_2long(&aux, &b->beacon_interval);
       decode_long(&aux, &b->capabilities);
       decode_char(&aux, &b->ssid);
+      for(j = 0; j < sizeof(b->addr); j++)
+        decode_byte(&aux, &b->addr[j]);
       decode_int(&aux, &b->channel);
       decode_uint(&aux, &b->num_rates);
 
       b->rates = malloc(b->num_rates * sizeof(struct supported_rates));
-      int j;
       for(j=0; j < b->num_rates; j++) {
         struct supported_rates * r = &b->rates[j]; // auxiliar pointer
         decode_uint(&aux, &r->id);
         decode_uint(&aux, &r->rate);
-        decode_bool(&aux, &r->basic_rate);      
+        decode_bool(&aux, &r->basic_rate);
       }
-              
+
       decode_uint(&aux, &b->fh_parameter);
       decode_uint(&aux, &b->fh_parameters);
       decode_uint(&aux, &b->fh_pattern_table);
 
-      decode_ulong(&aux, &b->ds_parameter);
+      for(j = 0; j < sizeof(b->ds_parameter); j++)
+        decode_byte(&aux, &b->ds_parameter[j]);
       decode_2long(&aux, &b->cf_parameter);
-      decode_long(&aux, &b->ibss_parameter);
+      for(j = 0; j < sizeof(b->ibss_parameter); j++)
+        decode_byte(&aux, &b->ibss_parameter[j]);
 
       decode_uint(&aux, &b->country.country_code);
       decode_int(&aux, &b->country.environment);
@@ -217,7 +224,7 @@ void decode_msg_beaconinfo(char * buf, int buf_len, struct msg_beaconinfo ** h) 
           decode_uint(&aux, &c->starting_channel);
           decode_uint(&aux, &c->num_channels);
           decode_uint(&aux, &c->max_tx_power);
-        }      
+        }
       } else {
         b->country.c = NULL;
       }
@@ -240,7 +247,7 @@ void decode_msg_beaconinfo(char * buf, int buf_len, struct msg_beaconinfo ** h) 
           decode_2long(&aux, &b->rsn.pairwise_cipher_oui[j]);
         }
       } else {
-        b->rsn.pairwise_cipher_oui = NULL;  
+        b->rsn.pairwise_cipher_oui = NULL;
       }
       decode_uint(&aux, &b->rsn.authkey_count);
       if (b->rsn.authkey_count > 0) {
@@ -249,7 +256,7 @@ void decode_msg_beaconinfo(char * buf, int buf_len, struct msg_beaconinfo ** h) 
           decode_2long(&aux, &b->rsn.akmp_suite_oui[j]);
         }
       } else {
-        b->rsn.akmp_suite_oui =  NULL;  
+        b->rsn.akmp_suite_oui =  NULL;
       }
       decode_uint(&aux, &b->rsn.rsn_capabilities);
       decode_uint(&aux, &b->rsn.pmkid_count);
@@ -259,7 +266,7 @@ void decode_msg_beaconinfo(char * buf, int buf_len, struct msg_beaconinfo ** h) 
           decode_2long(&aux, &b->rsn.pmkid[j]);
         }
       } else {
-        b->rsn.pmkid = NULL;  
+        b->rsn.pmkid = NULL;
       }
 
       decode_uint(&aux, &b->station_count);
@@ -283,45 +290,56 @@ void decode_msg_beaconinfo(char * buf, int buf_len, struct msg_beaconinfo ** h) 
   }
 }
 
-void print_msg_beaconinfo(struct msg_beaconinfo * h) {
+void print_msg_beaconinfo(msg_beaconinfo * h) {
   if (h == NULL) return;
   printf("Type           : %d\n", h->m_type);
   printf("Msg id         : %d\n", h->m_id);
   printf("Version        : %s\n", h->p_version);
   printf("Msg size       : %d\n", h->m_size);
   printf("num beacons    : %d\n", h->num_beacons);
-  int i;
+  int i, j;
   for(i=0; i < h->num_beacons; i++){
     struct beacon_received * b = h->b[i];
-    printf("beacon #%d\n", i);    
+    printf("beacon #%d\n", i);
     printf("beacon interval %lli\n", b->beacon_interval);
     printf("capabilities %li\n", b->capabilities);
     printf("SSID : %s\n", b->ssid);
+    printf("MAC  : ");
+    for(j = 0; j < sizeof(b->addr); j++)
+      printf("%02x:", b->addr[j]);
+    printf("\n");
     printf("Channel %d\n", b->channel);
     printf("Rates #%d\n", b->num_rates);
-    int j;
     for(j=0; j < b->num_rates; j++) {
       struct supported_rates * r = &b->rates[j];
-      printf("ID %d Rate %d %s\n", r->id, r->rate, r->basic_rate ? "Basic Rate" : "");      
+      printf("ID %d Rate %d %s\n", r->id, r->rate, r->basic_rate ? "Basic Rate" : "");
     }
     printf("FH %d %d Pattern table %d\n", b->fh_parameter, b->fh_parameters, b->fh_pattern_table);
-    printf("DS %li CF %lli IBSS %li\n", b->ds_parameter, b->cf_parameter, b->ibss_parameter);
+    printf("DS ");
+    for(j = 0; j < sizeof(b->ds_parameter); j++)
+      printf("%02x:", b->ds_parameter[j]);
+    printf("\n");
+    printf("CF %lli\n", b->cf_parameter);
+    printf("IBSS ");
+    for(j = 0; j < sizeof(b->ibss_parameter); j++)
+      printf("%02x:", b->ibss_parameter[j]);
+    printf("\n");
     printf("Country code %d Environment %d\n", b->country.country_code, b->country.environment);
     printf(" Channels #%d\n", b->country.num_beacon_channels);
     if (b->country.num_beacon_channels > 0) {
       struct beacon_channels * c = &b->country.c[j];
       printf("Start Channel %d Max Channels %d Tx Power %d\n", c->starting_channel, c->num_channels, c->max_tx_power);
     }
-    printf("%li %lli Quite Time %lli IBSS DFS %d Tx Power %d Link Margin %d ERP %lli\n", 
-      b->power_constraint, b->channel_switch, b->quite_time, 
+    printf("%li %lli Quite Time %lli IBSS DFS %d Tx Power %d Link Margin %d ERP %lli\n",
+      b->power_constraint, b->channel_switch, b->quite_time,
       b->ibss_dfs, b->transmit_power, b->link_margin, b->erp_information);
 
-    printf("RSS version %d Cipher: OUI %lli Type %d Count %d\n", 
+    printf("RSS version %d Cipher: OUI %lli Type %d Count %d\n",
       b->rsn.version, b->rsn.group_cipher_oui, b->rsn.group_cipher_type, b->rsn.pairwise_cipher_count);
 
-    printf("Pairwise: OUI %lli Auth %d Akmp %lli RsnCap %d\n", 
+    printf("Pairwise: OUI %lli Auth %d Akmp %lli RsnCap %d\n",
       *(b->rsn.pairwise_cipher_oui), b->rsn.authkey_count, *(b->rsn.akmp_suite_oui), b->rsn.rsn_capabilities);
-    printf("Pairwise: PMKIDCount %d PMKID %lli \n", 
+    printf("Pairwise: PMKIDCount %d PMKID %lli \n",
       b->rsn.pmkid_count, *(b->rsn.pmkid));
 
    printf("station_count: %d \n", b->station_count);
@@ -351,7 +369,7 @@ void print_msg_beaconinfo(struct msg_beaconinfo * h) {
 
 
 void process_msg_beaconinfo(char ** input, int input_len, char ** output, int * output_len) {
-  struct msg_beaconinfo * h;
+  msg_beaconinfo * h;
   decode_msg_beaconinfo(*input, input_len, &h);
 
   /************************************ FUNCAO LOCAL ***********************************/
@@ -372,12 +390,12 @@ void process_msg_beaconinfo(char ** input, int input_len, char ** output, int * 
   doesn't dealloacte "bi" when exit
 
  */
-int send_msg_beaconinfo(char * hostname, int portnum, int * id, struct msg_beaconinfo * bi){
+int send_msg_beaconinfo(char * hostname, int portnum, int * id, msg_beaconinfo * bi){
   int ret = -1; // if cannot connect to the server
   struct ssl_connection h_ssl;
 
   // << step 1 - get connection
-  int err = get_ssl_connection(hostname, portnum, &h_ssl); 
+  int err = get_ssl_connection(hostname, portnum, &h_ssl);
   if (err == 0 && NULL != h_ssl.ssl) {
     int bytes;
     char * buffer;
@@ -388,13 +406,13 @@ int send_msg_beaconinfo(char * hostname, int portnum, int * id, struct msg_beaco
     if (bi->p_version) free(bi->p_version);
     bi->p_version = NULL;
     copy_string(&bi->p_version, ETHANOL_VERSION);
-    
+
     bi->m_size = message_size_beaconinfo(bi);
 
     encode_msg_beaconinfo(bi, &buffer, &bytes);
     SSL_write(h_ssl.ssl, buffer, bytes);   /* encrypt & send message bi */
 
-    free(buffer); // release buffer area allocated 
+    free(buffer); // release buffer area allocated
     ret = 0;
   }
   close_ssl_connection(&h_ssl); // last step - close connection
@@ -402,7 +420,7 @@ int send_msg_beaconinfo(char * hostname, int portnum, int * id, struct msg_beaco
 }
 
 
-void free_beacon_received(struct beacon_received * b) {
+void free_beacon_received(beacon_received * b) {
   if (b == NULL) return;
   if (b->ssid) free(b->ssid);
   if (b->num_rates > 0 && b->rates) free(b->rates);
@@ -411,15 +429,15 @@ void free_beacon_received(struct beacon_received * b) {
   if (b->rsn.authkey_count > 0 && b->rsn.akmp_suite_oui) free(b->rsn.akmp_suite_oui);
   if (b->rsn.pmkid_count > 0 && b->rsn.pmkid) free(b->rsn.pmkid);
   free(b);
-  b = NULL; // TODO: parameter must be **b 
+  b = NULL; // TODO: parameter must be **b
 }
 
-void free_msg_beaconinfo(struct msg_beaconinfo * m) {
+void free_msg_beaconinfo(msg_beaconinfo * m) {
   if (m == NULL) return;
-  free(m->p_version);  
+  free(m->p_version);
   int i;
   for(i = 0; i < m->num_beacons; i++) {
-    struct beacon_received * b = m->b[i];
+    beacon_received * b = m->b[i];
     free_beacon_received(b);
   }
   free(m->b);
