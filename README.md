@@ -113,4 +113,4 @@ $ sudo hostapd ./hostapd.conf
 ## Final remarks ##
 
 We appreciate your understanding due to the existence of some comments that still remain in Portuguese in the program code.
-If you find something that needs our attention, please register it in [Issues] (https://github.com/h3dema/ethanol_hostapd/issues).
+If you find something that needs our attention, please register it in [Issues](https://github.com/h3dema/ethanol_hostapd/issues).
