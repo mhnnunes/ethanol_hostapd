@@ -1,31 +1,31 @@
 // ----------------------------------------------------------------------------
 /**
    File: getip.h
-  
+
    System:         Linux
-   Component Name: Ethanol, Netlink, getmacaddress 
-   Status:         Version 1.0 Release 1  
+   Component Name: Ethanol, Netlink, getmacaddress
+   Status:         Version 1.0 Release 1
    Language: C
-  
-   License: GNU Public License 
-  
+
+   License: GNU Public License
+
    Description: Este módulo obtem endereço IP de uma interface
-   
+
    Limitations: funciona somente em ambiente linux com sockets
                 pode ser obtido também lendo /sys/class/net/<interface>/address
-  
+
    Function: 1) getipv4
              2) getipv6
-  
+
    Thread Safe: yes
-  
+
    Compiler Options: none
-  
+
    Change History:                  (Sometimes called "Revisions")
    Date         Author       Description
    09/03/2016   Henrique     primeiro release
 
-*/ 
+*/
 #ifndef GETIP_H
 #define GETIP_H
 
@@ -37,7 +37,7 @@
 
 struct addr_list {
     char * intf;
-    char * ip;    
+    char * ip;
 };
 
 /*
