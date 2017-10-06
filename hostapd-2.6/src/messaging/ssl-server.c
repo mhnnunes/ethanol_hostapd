@@ -98,6 +98,8 @@
 #include "msg_mean_sta_stats.h"
 #include "msg_station_trigger_transition.h"
 #include "msg_tos.h"
+#include "msg_mtu.h"
+#include "msg_txqueuelen.h"
 
 
 #define DEBUG_SERVLET
@@ -820,6 +822,20 @@ void servlet(SSL* ssl, char * client_addr, int client_port) {
                printf("Receiving MSG_TOS_REPLACE message from %s\n", client_addr);
             #endif
             process_msg_tos_replace(&input_msg, input_len, &reply, &reply_len);
+            break;
+
+        case MSG_SET_MTU:
+            #ifdef DEBUG_SERVLET
+               printf("Receiving MSG_SET_MTU message from %s\n", client_addr);
+            #endif
+            process_msg_set_mtu(&input_msg, input_len, &reply, &reply_len);
+            break;
+
+        case MSG_SET_TXQUEUELEN:
+            #ifdef DEBUG_SERVLET
+               printf("Receiving MSG_SET_TXQUEUELEN message from %s\n", client_addr);
+            #endif
+            process_msg_set_txqueuelen(&input_msg, input_len, &reply, &reply_len);
             break;
 
         default:  //unknown messages

@@ -5,6 +5,7 @@
                 precisa da ferramenta ip
                 http://man7.org/linux/man-pages/man8/ip.8.html
  */
+#include <stdbool.h>
 
 #define SCOPE_GLOBAL 0
 #define SCOPE_SITE 1

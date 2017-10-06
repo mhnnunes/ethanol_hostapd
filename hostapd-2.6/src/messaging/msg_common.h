@@ -2,6 +2,7 @@
 #define ___MSG_COMMON_H
 
 #include <stdio.h>
+#include <sys/time.h>
 
 #define ETHANOL_VERSION "1.0.3" // << changed in 13/april/2017
 #define DEFAULT_MSG_SIZE 0
@@ -152,7 +153,9 @@ enum Enum_msg_type {
   MSG_CHANGED_AP,                    // inform the controller that station changed ap
   MSG_TOS_CLEANALL,
   MSG_TOS_ADD,
-  MSG_TOS_REPLACE
+  MSG_TOS_REPLACE,
+  MSG_SET_MTU,
+  MSG_SET_TXQUEUELEN
 };
 
 

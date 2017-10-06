@@ -11,6 +11,7 @@
 #include "../ethanol_functions/get_route.h"
 #include "../ethanol_functions/get_dns.h"
 #include "../ethanol_functions/setip.h"
+#include "../ethanol_functions/route.h"
 
 #include "buffer_handler_fun.h"
 #include "msg_common.h"
@@ -286,8 +287,8 @@ void process_msg_ipv4_address(char ** input, int input_len, char ** output, int 
         for(i = 0; i < h->config.n_dns; i++){
             h->config.dns[i] = h1->config.dns[i]; h1->config.dns[i] = NULL;
         }
+        free_msg_ip_address(&h1);
       }
-      free_msg_ip_address(&h1);
     } else {
       struct netlink_interface * intf = get_interface_info(h->config.intf_name);
       if(intf != NULL){

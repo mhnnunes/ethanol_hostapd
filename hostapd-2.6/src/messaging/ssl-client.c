@@ -89,8 +89,10 @@
 #include "msg_mean_sta_stats.h"
 #include "msg_changed_ap.h"
 #include "msg_tos.h"
+#include "msg_mtu.h"
+#include "msg_txqueuelen.h"
 
-#define NUM_TIPOS_MENSAGENS_STR 125
+#define NUM_TIPOS_MENSAGENS_STR 127
 char * todas_opcoes[] = {
 "MSG_HELLO_TYPE",
 "MSG_BYE_TYPE",
@@ -216,7 +218,9 @@ char * todas_opcoes[] = {
 "MSG_CHANGED_AP",
 "MSG_TOS_CLEANALL",
 "MSG_TOS_ADD",
-"MSG_TOS_REPLACE"
+"MSG_TOS_REPLACE",
+"MSG_SET_MTU",
+"MSG_SET_TXQUEUELEN"
 };
 
 void call_msg_get_sta_statistics(char * hostname, int portnum, int * m_id, char * intf_name, char * sta_ip, int sta_port) {
@@ -1829,6 +1833,15 @@ int main(int argc, char *argv[]) {
                                1, INTERFACE_WLAN, "udp", NULL, NULL, NULL, "5001", 4); // AC_VI
           break;
       }
+      case MSG_SET_MTU: {
+          send_msg_set_mtu(hostname, portnum, &m_id, INTERFACE_WLAN, NULL, 0, 1200);
+          break;
+      }
+      case MSG_SET_TXQUEUELEN: {
+          send_msg_set_txqueuelen(hostname, portnum, &m_id, INTERFACE_WLAN, NULL, 0, 500);
+          break;
+      }
+
       default:
     		printf("Opção [%s] inválida!\n\n", opcao_lida);
     		printf("\n\n");
