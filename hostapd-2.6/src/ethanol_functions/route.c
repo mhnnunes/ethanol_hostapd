@@ -11,6 +11,8 @@
 #include "wapi_util.h"
 #include "wapi_route.h"
 
+#include "connect.h"
+
 struct lista_rotas_ptr {
   struct entrada_rotas * r;
   struct lista_rotas_ptr * next;
@@ -115,6 +117,46 @@ struct lista_rotas * wapi_get_routes() {
   }
   return result;
 }
+
+#define ADD_DEFAULT_ROUTE "sudo %s route add default %s dev %s"
+int add_default_route(char * intf_name, char * net){
+  char * ip = which_path("ip");
+  char buffer[MAX_BUFF_SIZE];
+  sprintf(buffer, ADD_DEFAULT_ROUTE, ip, net, intf_name);
+  int ret = system((const char *)&buffer);
+  if (ip) free(ip);
+  return ret;
+}
+
+#define ADD_ROUTE "sudo %s route add %s dev %s"
+int add_default_route(char * intf_name, char * net){
+  char * ip = which_path("ip");
+  char buffer[MAX_BUFF_SIZE];
+  sprintf(buffer, ADD_ROUTE, ip, net, intf_name);
+  int ret = system((const char *)&buffer);
+  if (ip) free(ip);
+  return ret;
+}
+
+int del_default_route(){
+  char * ip = which_path("ip");
+  char buffer[MAX_BUFF_SIZE];
+  sprintf(buffer, "sudo %s route del default", ip);
+  int ret = system((const char *)&buffer);
+  if (ip) free(ip);
+  return ret;
+}
+
+#define DEL_ROUTE "sudo %s route del %s dev %s"
+int del_route(char * intf_name, char * net){
+  char * ip = which_path("ip");
+  char buffer[MAX_BUFF_SIZE];
+  sprintf(buffer, DEL_ROUTE, ip, net, intf_name);
+  int ret = system((const char *)&buffer);
+  if (ip) free(ip);
+  return ret;
+}
+
 
 #ifdef USE_MAIN
 int main() {

@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------
-/** \file connetc.h
+/** \file connect.h
   \verbatim
    System:         Linux
    Component Name: Ethanol, connect
@@ -33,7 +33,6 @@
 #define ____CONNECT_H
 
 #include <stdbool.h>
-
 
 char * which_path(char * cmd);
 

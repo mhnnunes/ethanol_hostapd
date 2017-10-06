@@ -119,7 +119,7 @@ void free_lista_rotas(struct lista_rotas * p) {
   if (p == NULL) return;
   int i;
   for(i=0; i < p->num_routes; i++) {
-    struct entrada_rotas * ri = p->r[i]; 
+    struct entrada_rotas * ri = p->r[i];
     if (ri->ifname) free(ri->ifname);
     if (ri->dest)   free(ri->dest);
     if (ri->gw)     free(ri->gw);
@@ -184,7 +184,7 @@ int main() {
   struct lista_rotas * lista = NULL;
   if ((lista = get_routes()) != NULL) {
     /* print route */
-    
+
     for (i = 0; i < lista->num_routes; i++ ) {
       struct entrada_rotas * ri = lista->r[i];
       printf(">> dest: %s\t", ri->dest);
@@ -212,7 +212,7 @@ int main() {
   }
   free_lista_rotas(lista);
 */
-  
+
   printf("saindo...\n");
   return 0;
 }

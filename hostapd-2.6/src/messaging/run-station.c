@@ -105,11 +105,10 @@ int main(int argc, char * argv[]) {
             usage(argv);
             exit(1);
     }
+
     config.ethanol_enable = (config.server_addr == NULL) ? 0 : 1;
-
     printf("Calling run_ethanol_server() in STATION.\n");
-
-    run_threaded_server(&config);
+    run_threaded_server(&config, true);
 
     #ifdef HANDOVER
         int id = 0;
@@ -174,6 +173,6 @@ int main(int argc, char * argv[]) {
         }
 
     #endif
-
+    printf("saindo\n");
     return 0;
 }

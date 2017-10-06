@@ -9,8 +9,10 @@ int isRoot(void);
 void run_ethanol_server(ethanol_configuration * config);
 
 /** runs ethanol in another thread
-  :return pthread_create error value
+
+  :param join = true, main thread waits for ethanol's thread
+  :return an integer. 0 if success, or else the pthread_create error value
  */
-int run_threaded_server(ethanol_configuration * config);
+int run_threaded_server(ethanol_configuration * config, bool join);
 
 #endif

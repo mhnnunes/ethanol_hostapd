@@ -876,6 +876,7 @@ void * send_hello_to_controller(void * arg) {
 
 /** generic function to run the server */
 void run_ethanol_server(ethanol_configuration * config) {
+    printf("inside run_ethanol_server\n");
     SSL_CTX *ctx;
     int server;
 
@@ -885,10 +886,13 @@ void run_ethanol_server(ethanol_configuration * config) {
         perror("This program must be run as root/sudo user!!\n");
         exit(0);
     }
+    printf("SSL_library_init\n");
     SSL_library_init();
-
+    printf("InitServerCTX\n");
     ctx = InitServerCTX();        /* initialize SSL */
+    printf("LoadCertificates\n");
     LoadCertificates(ctx, "mycert.pem", "mycert.pem"); /* load certs */
+    printf("OpenListener\n");
     server = OpenListener(config->local_server_port);    /* create server socket */
     printf("Local server running at %d\n", config->local_server_port);
     printf("waiting for new connections...\n");
@@ -934,9 +938,12 @@ void * thread_start_server(void * arg) {
 }
 
 
-int run_threaded_server(ethanol_configuration * config) {
+int run_threaded_server(ethanol_configuration * config, bool join) {
   // run ethanol server as a thread
+  // join = true, main thread waits for ethanol's thread
   pthread_t server_thread_id;
   int err = pthread_create(&server_thread_id, NULL, &thread_start_server, config );
-  return err;  
+  if (join && (err == 0))
+    pthread_join(server_thread_id, NULL);
+  return err;
 }
