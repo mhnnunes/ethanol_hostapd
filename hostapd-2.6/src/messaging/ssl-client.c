@@ -54,7 +54,6 @@
 #include "msg_interferencemap.h"
 #include "msg_intf.h"
 #include "msg_ipv4_address.h"
-#include "msg_ipv6_address.h"
 #include "msg_jitter.h"
 #include "msg_mac.h"
 #include "msg_memory.h"
@@ -589,13 +588,13 @@ void call_msg_intfs(char *hostname, int portnum, int *m_id)
 
 void call_msg_get_ipv4_address(char *hostname, int portnum, int *m_id, char * intf_name, char * sta_ip, int sta_port) {
   printf("msg_ipv4_address:\n");
-  struct msg_ipv4_address * h1 = send_msg_get_ipv4_address(hostname, portnum, m_id, intf_name, sta_ip, sta_port);
-  printf_msg_ipv4_address(h1);
-  free_msg_ipv4_address(&h1);
+  struct msg_ip_address * h1 = send_msg_get_ipv4_address(hostname, portnum, m_id, intf_name, sta_ip, sta_port);
+  printf_msg_ip_address(h1);
+  free_msg_ip_address(&h1);
 }
 
 void call_msg_set_ipv4_address(char *hostname, int portnum, int *m_id, char * intf_name, char * ip, char * netmask, char * gateway, unsigned int n_dns, char ** dns) {
-	struct ip_config *h = (struct ip_config *) malloc(sizeof(struct ip_config));
+	struc_ip_config * h = (struc_ip_config *) malloc(sizeof(struc_ip_config));
 	if(strcmp(ip,"DHCP") != 0){
 		h->intf_name = intf_name;
 		h->ip = ip;
@@ -623,27 +622,13 @@ void call_msg_set_ipv4_address(char *hostname, int portnum, int *m_id, char * in
 
 void call_msg_get_ipv6_address(char *hostname, int portnum, int *m_id, char * intf_name) {
   printf("msg_ipv6_address:\n");
-  struct msg_ipv6_address * h1 = send_msg_get_ipv6_address(hostname, portnum, m_id, intf_name);
-  printf("Type    : %d\n", h1->m_type);
-  printf("Msg id  : %d\n", h1->m_id);
-  printf("Version : %s\n", h1->p_version);
-  printf("Msg size: %d\n", h1->m_size);
-  printf("Intf_name : %s\n", h1->config.intf_name);
-  printf("Ip : %s\n", h1->config.ip);
-  printf("Netmask : %s\n", h1->config.netmask);
-  printf("Gateway : %s\n", h1->config.gateway);
-  if(h1->config.n_dns > 0){
-	  int i;
-  	for(i = 0; i < h1->config.n_dns; i++){
-  	  printf("Gateway : %s\n", h1->config.dns[i]);
-  	}
-
-	}
-  free_msg_ipv6_address(h1);
+  struct msg_ip_address * h1 = send_msg_get_ipv6_address(hostname, portnum, m_id, intf_name, NULL, 0);
+  printf_msg_ip_address(h1);
+  free_msg_ip_address(&h1);
 }
 
 void call_msg_set_ipv6_address(char *hostname, int portnum, int *m_id, char * intf_name, char * ip, char * netmask, char * gateway, unsigned int n_dns, char ** dns) {
-	struct ip_config_v6 *h = (struct ip_config_v6 *) malloc(sizeof(struct ip_config_v6));
+	struc_ip_config * h = (struc_ip_config *) malloc(sizeof(struc_ip_config));
 	if(strcmp(ip,"DHCP") != 0){
 		h->intf_name = intf_name;
 		h->ip = ip;
@@ -665,7 +650,7 @@ void call_msg_set_ipv6_address(char *hostname, int portnum, int *m_id, char * in
 	}
   printf("msg_set_ipv6_address:\n");
   printf("Intf_name : %s\n", intf_name);
-  send_msg_set_ipv6_address(hostname, portnum, m_id, h);
+  send_msg_set_ipv6_address(hostname, portnum, m_id, h, NULL, 0);
 }
 
 

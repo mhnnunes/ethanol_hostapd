@@ -73,4 +73,5 @@ char * get_gateway(char * net, char * mask);
 
 void free_lista_rotas(struct lista_rotas * p);
 
+char * convert_s_addr(unsigned int v);
 #endif

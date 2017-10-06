@@ -2182,10 +2182,12 @@ static void handle_assoc(struct hostapd_data *hapd,
   sta->last_subtype = reassoc ? WLAN_FC_STYPE_REASSOC_REQ :
     WLAN_FC_STYPE_ASSOC_REQ;
 
+  #ifdef ETHANOL
     if (dont_auth) {
         resp = WLAN_REASON_UNSPECIFIED;
         goto fail;
     }
+  #endif
 
   if (hapd->tkip_countermeasures) {
     resp = WLAN_REASON_MICHAEL_MIC_FAILURE;

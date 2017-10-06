@@ -9,30 +9,23 @@
 #include <string.h>
 
 #include "wapi_util.h"
-#include "wapi_route.h"
 
 #include "connect.h"
+#include "get_route.h"
+#include "route.h"
+
+#define MAX_BUFF_SIZE 1024
 
 struct lista_rotas_ptr {
   struct entrada_rotas * r;
   struct lista_rotas_ptr * next;
 };
 
-
-char * convert_s_addr(unsigned int v){
-  struct in_addr x;
-  x.s_addr = v;
-  char * aux = inet_ntoa(x);
-  char * result = malloc((strlen(aux) + 1) * sizeof(char));
-  strcpy(result, aux);
-  return result;
-}
-
 /*
   TODO: retornar uma lista
 
  */
-struct lista_rotas * wapi_get_routes() {
+struct lista_rotas * wapi_get_routes(void) {
   FILE *fp;
   size_t bufsiz = WAPI_PROC_LINE_SIZE * sizeof(char);
   char buf[WAPI_PROC_LINE_SIZE];
@@ -129,7 +122,7 @@ int add_default_route(char * intf_name, char * net){
 }
 
 #define ADD_ROUTE "sudo %s route add %s dev %s"
-int add_default_route(char * intf_name, char * net){
+int add_route(char * intf_name, char * net){
   char * ip = which_path("ip");
   char buffer[MAX_BUFF_SIZE];
   sprintf(buffer, ADD_ROUTE, ip, net, intf_name);

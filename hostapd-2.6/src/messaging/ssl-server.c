@@ -61,7 +61,6 @@
 #include "msg_interferencemap.h"
 #include "msg_intf.h"
 #include "msg_ipv4_address.h"
-#include "msg_ipv6_address.h"
 #include "msg_jitter.h"
 #include "msg_mac.h"
 #include "msg_memory.h"

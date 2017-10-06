@@ -25,21 +25,114 @@
    Date         Author       Description
    09/03/2015   Henrique     primeiro release
 */
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>     // calloc
+#include <stdbool.h>
+
 #include <sys/ioctl.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <unistd.h>
 
 #include <net/if.h>
+#include <net/ethernet.h>
 #include <netinet/in.h>
-
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>     // calloc
+#include <linux/sockios.h>
+#include <netinet/in.h>
+#include <netpacket/packet.h>
 
 #include "getip.h"
 #include "utils.h"
+#include "connect.h"
 
+#include <sys/ioctl.h>
+#include <net/if.h>
+
+
+
+#define ifreq_offsetof(x)  offsetof(struct ifreq, x)
+
+
+/**
+  intf = "eth0"
+  addr = "192.168.10.1"
+ */
+
+bool set_ipv4_old(char * intf_name, char * addr) {
+  struct ifreq ifr;
+  int selector;
+  unsigned char mask;
+
+  /* socket fd we use to manipulate stuff with */
+  /* Create a channel to the NET kernel. */
+  int sockfd;
+  if ((sockfd = socket(AF_INET, SOCK_DGRAM, 0)) == -1) return false;
+
+  /* get interface name */
+  strncpy(ifr.ifr_name, intf_name, IFNAMSIZ);
+
+  struct sockaddr_in sai;
+  memset(&sai, 0, sizeof(struct sockaddr));
+  sai.sin_family = AF_INET;
+  sai.sin_port = 0;
+
+  sai.sin_addr.s_addr = inet_addr(addr); // convert addr as string to sockaddr format
+
+  char * p = (char *) &sai;
+  memcpy( (((char *)&ifr + ifreq_offsetof(ifr_addr) )),
+                  p, sizeof(struct sockaddr));
+
+  ioctl(sockfd, SIOCSIFADDR, &ifr);
+
+
+  // coloca a interface rodando
+  ioctl(sockfd, SIOCGIFFLAGS, &ifr);
+  ifr.ifr_flags |= IFF_UP | IFF_RUNNING;
+  // ifr.ifr_flags &= ~selector;  // unset something
+  ioctl(sockfd, SIOCSIFFLAGS, &ifr);
+
+  close(sockfd);
+  return 0;
+
+}
+
+bool set_ipv6(char * intf_name, char * addr) {
+  struct ifreq ifr;
+  int selector;
+  unsigned char mask;
+
+  /* socket fd we use to manipulate stuff with */
+  /* Create a channel to the NET kernel. */
+  int sockfd;
+  if ((sockfd = socket(AF_INET, SOCK_DGRAM, 0)) == -1) return false;
+
+  /* get interface name */
+  strncpy(ifr.ifr_name, intf_name, IFNAMSIZ);
+
+  struct sockaddr_in6 sai;
+  memset(&sai, 0, sizeof(struct sockaddr));
+  sai.sin_family = AF_INET;
+  sai.sin_port = 0;
+
+  sai.sin_addr.s_addr = inet_addr(addr); // convert addr as string to sockaddr format
+
+  char * p = (char *) &sai;
+  memcpy( (((char *)&ifr + ifreq_offsetof(ifr_addr) )),
+                  p, sizeof(struct sockaddr));
+
+  ioctl(sockfd, SIOCSIFADDR6, &ifr);
+
+  // coloca a interface rodando
+  ioctl(sockfd, SIOCGIFFLAGS, &ifr);
+  ifr.ifr_flags |= IFF_UP | IFF_RUNNING;
+  // ifr.ifr_flags &= ~selector;  // unset something
+  ioctl(sockfd, SIOCSIFFLAGS, &ifr);
+
+  close(sockfd);
+  return true;
+
+}
 /*
  * uses a combination of ioctl call, with SIOCGIFCONF and:
  * SIOCGIFADDR
@@ -50,8 +143,9 @@
 int get_ip_addresses_internal(struct addr_list *** addresses, char * intfname, bool ipv4) {
 
     unsigned long int __request;
-    if (ipv4) __request = SIOCGIFADDR
-        else  __request = SIOCGIFADDR6;
+    if (ipv4) {
+      __request = SIOCGIFADDR;
+    } else  __request = SIOCGIFADDR6;
 
     struct ifreq ifr;
     struct ifconf ifc;
@@ -60,9 +154,9 @@ int get_ip_addresses_internal(struct addr_list *** addresses, char * intfname, b
 
     int sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_IP);
     if (sock == -1) { /* handle error*/
-#ifdef DEBUG
+        #ifdef DEBUG
         fprintf(stderr, "Erro na abertura do socket\n");
-#endif
+        #endif
         return ERR_SOCKET;
     };
 
@@ -70,9 +164,9 @@ int get_ip_addresses_internal(struct addr_list *** addresses, char * intfname, b
     ifc.ifc_buf = buf;
     if (ioctl(sock, SIOCGIFCONF, &ifc) == -1) {
         /* handle error */
-#ifdef DEBUG
+        #ifdef DEBUG
         fprintf(stderr, "Erro ao chamar ioctl\n");
-#endif
+        #endif
         return ERR_IOCTL;
     }
 
@@ -80,14 +174,14 @@ int get_ip_addresses_internal(struct addr_list *** addresses, char * intfname, b
     struct ifreq* it = ifc.ifc_req; // ponteiro para dados da primeira interface
     const struct ifreq* const end = it + num_it; // ponteiro para última interface da lista
     if (((*addresses) = (struct addr_list**) malloc (num_it*sizeof(struct addr_list*))) == NULL) {
-#ifdef DEBUG
+        #ifdef DEBUG
         fprintf(stderr, "Erro ao alocar espaço para addresses\n");
-#endif
+        #endif
         return ERR_GETIP_ADDRESSES;
     }
-#ifdef DEBUG
+    #ifdef DEBUG
     fprintf(stderr, "N# interfaces localizadas = %d\n", num_it-1);
-#endif
+    #endif
     for (; it != end; ++it) { // busca interfaces, uma a uma
         strcpy(ifr.ifr_name, it->ifr_name);
         if (ioctl(sock, SIOCGIFFLAGS, &ifr) == 0) {
@@ -97,9 +191,9 @@ int get_ip_addresses_internal(struct addr_list *** addresses, char * intfname, b
                         // desalocar os endereços
                         return ERR_MALLOC;
                     }
-#ifdef DEBUG
-                       fprintf(stderr, "Verifica %s\n", ifr.ifr_name);
-#endif
+                    #ifdef DEBUG
+                    fprintf(stderr, "Verifica %s\n", ifr.ifr_name);
+                    #endif
                     if ((NULL == intfname) || ((NULL != intfname) && (strcmp(ifr.ifr_name, intfname) == 0))) {
                         (*addresses)[i]->intf = (char *) malloc(strlen(ifr.ifr_name)+1);
                         strcpy((*addresses)[i]-> intf, ifr.ifr_name);
@@ -108,10 +202,10 @@ int get_ip_addresses_internal(struct addr_list *** addresses, char * intfname, b
                         (*addresses)[i]->ip = format_ipv4(ifr.ifr_addr.sa_data);
 
                         strcpy((*addresses)[i]->ip, ip);
-#ifdef DEBUG
-                       fprintf(stderr, "%s %s\n", ifr.ifr_name, ip);
-#endif
-                }
+                        #ifdef DEBUG
+                        fprintf(stderr, "%s %s\n", ifr.ifr_name, ip);
+                        #endif
+                    }
                 } else {
                     (*addresses)[i] = NULL;
                 }
@@ -132,9 +226,9 @@ struct addr_list * get_ip_address(char * intf, bool ipv4) {
     struct addr_list ** addresses = NULL;
     struct addr_list * ans = NULL;
     int n;
-#ifdef DEBUG
+    #ifdef DEBUG
     printf(">>> itf: %s\n", intf);
-#endif
+    #endif
     if ((n = get_ip_addresses_internal(&addresses, intf, ipv4)) > 0) {
         ans = (struct addr_list *) malloc(sizeof(struct addr_list));
         ans = addresses[0];

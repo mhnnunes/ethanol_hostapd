@@ -32,7 +32,6 @@
 // lista de erros retornados pela função getmacaddresses
 #define ERR_SOCKET -1
 #define ERR_IOCTL -2
-#define ERR_GETIP_ADDRESSES -3
 #define ERR_GETIP_MALLOC -4
 
 struct addr_list {

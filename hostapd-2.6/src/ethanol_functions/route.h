@@ -6,7 +6,7 @@
 int add_default_route(char * intf_name, char * net);
 int add_route(char * intf_name, char * net);
 
-int del_default_route();
+int del_default_route(void);
 int del_route(char * intf_name, char * net);
 
 #endif

@@ -17,6 +17,7 @@ struct lista_rotas_ptr {
   struct lista_rotas_ptr * next;
 };
 
+
 char * convert_s_addr(unsigned int v){
   struct in_addr x;
   x.s_addr = v;

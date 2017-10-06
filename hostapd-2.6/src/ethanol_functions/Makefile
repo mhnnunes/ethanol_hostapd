@@ -16,7 +16,8 @@ OBJS += ap_txpower.o
 OBJS += config_hostapd.o
 OBJS += get_acs.o
 OBJS += get_meminfo.o get_cpuinfo.o cpu_info.o get_dns.o convert_freq.o
-OBJS += get_noise.o signalstrength.o get_route.o
+OBJS += get_noise.o signalstrength.o 
+OBJS += get_route.o
 OBJS += get_phyintf.o getmac.o getnetlink.o get_interfaces.o
 OBJS += get_snr.o get_snr_ap.o
 OBJS += global_typedef.o
@@ -39,6 +40,8 @@ OBJS += wapi_getssid.o wlan_set_freq.o sta_link_information.o
 OBJS += wapi_quality.o
 OBJS += wapi_ssid.o wapi_scan.o wapi_scan2.o wapi_txpower.o
 OBJS += wapi_util.o wapi_frequency.o wapi_getfrequency.o
+OBJS += setip.o
+OBJS += route.o
 
 PROG = teste
 
@@ -195,6 +198,11 @@ teste-change_ap: connect.o
 teste-iwconfig:
 	$(CC) $(LDFLAGS) -c connect.c -o connect.o -DDEBUG -DUSE_MAIN -lm
 	$(CC) $(LDFLAGS) connect.o -o teste-iwconfig -DDEBUG -DUSE_MAIN -lm
+
+teste-getip: connect.o utils_str.o
+	$(CC) $(LDFLAGS) -c setip.c -o setip.o -DDEBUG -DUSE_MAIN -lm
+	$(CC) $(LDFLAGS) connect.o utils_str.o setip.o -o teste-getip -DDEBUG -DUSE_MAIN -lm
+
 
 config_hostapd:
 	$(CC) $(LDFLAGS) config_hostapd.c -o config_hostapd -lm -DUSE_MAIN
