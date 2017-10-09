@@ -1116,7 +1116,7 @@ hostapd: $(BCHECK) $(OBJS)
 # -lm para carregar as bibliotecas de math.h
 	$(eval LIBS_ETHANOL = $(LIB_COMMON) -lcurl -lnl -lpthread -lm -liw)
 #	@echo "  LIBS_ETHANOL " $(LIBS_ETHANOL)
-	@$(E) "  > " $(LDFLAGS) -o hostapd $(OBJS) $(LIBS) $(LIBS_ETHANOL)
+#	@$(E) "  > " $(LDFLAGS) -o hostapd $(OBJS) $(LIBS) $(LIBS_ETHANOL)
 	@$(E) "  LD " $@
 	$(Q)$(CC) $(LDFLAGS) -o hostapd $(OBJS) $(LIBS) $(LIBS_ETHANOL)
 

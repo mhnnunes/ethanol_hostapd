@@ -213,6 +213,6 @@ clean:
 	@rm -f convert_freq config_hostapd
 
 %.o: %.c
-	@echo ' compilando: ' $@
+	@echo ' CC : ' $@
 #	@echo $(CC)
-	$(CC) $(CFLAGS) -c -o $@ $< -lm -liw $(INCLUDES)
+	@$(CC) $(CFLAGS) -c -o $@ $< -lm -liw $(INCLUDES)

@@ -60,24 +60,33 @@ void free_msg_ip_address(msg_ip_address ** m){
 }
 
 unsigned long message_size_ip_address(msg_ip_address * h) {
+<<<<<<< HEAD
 	unsigned long size;
 	size = sizeof(h->m_type) + sizeof(h->m_id) +
+=======
+  unsigned long size;
+  size = sizeof(h->m_type) + sizeof(h->m_id) +
+>>>>>>> 5c64f2fab2eb06c026e53df94bf0f07d4d1bbaad
          strlen_ethanol(h->p_version) + sizeof(h->m_size) +
          strlen_ethanol(h->sta_ip) + sizeof(h->sta_port) +
-	       strlen_ethanol(h->config.intf_name) +
+         strlen_ethanol(h->config.intf_name) +
          strlen_ethanol(h->config.ip) +
          strlen_ethanol(h->config.netmask) +
          strlen_ethanol(h->config.gateway) +
          sizeof(h->config.n_dns);
          int i;
-  			 for(i=0; i < h->config.n_dns; i++) {
-					 size += strlen_ethanol(h->config.dns[i]);
-				 }
-	return size;
+         for(i=0; i < h->config.n_dns; i++) {
+           size += strlen_ethanol(h->config.dns[i]);
+         }
+  return size;
 }
 
 void encode_msg_ip_address(msg_ip_address * h, char ** buf, int * buf_len) {
+<<<<<<< HEAD
 	int size;
+=======
+  int size;
+>>>>>>> 5c64f2fab2eb06c026e53df94bf0f07d4d1bbaad
   size = message_size_ip_address(h);
   *buf_len = size;
   *buf = malloc(*buf_len);
@@ -85,8 +94,8 @@ void encode_msg_ip_address(msg_ip_address * h, char ** buf, int * buf_len) {
 
   h->m_size = size;
   encode_header(&aux, h->m_type, h->m_id, h->m_size);
-	encode_char(&aux, h->sta_ip);
-	encode_int(&aux, h->sta_port);
+  encode_char(&aux, h->sta_ip);
+  encode_int(&aux, h->sta_port);
 
     encode_char(&aux, h->config.intf_name);
     encode_char(&aux, h->config.ip);
@@ -95,17 +104,25 @@ void encode_msg_ip_address(msg_ip_address * h, char ** buf, int * buf_len) {
     encode_uint(&aux, h->config.n_dns);
     int i;
     for(i=0; i < h->config.n_dns; i++) {
-    	encode_char(&aux, h->config.dns[i]);
-  	}
+      encode_char(&aux, h->config.dns[i]);
+    }
 }
 
 void decode_msg_ip_address(char * buf, int buf_len, msg_ip_address ** h) {
 
+<<<<<<< HEAD
 	*h = malloc(sizeof(msg_ip_address));
   char * aux = buf;
 	decode_header(&aux, &(*h)->m_type, &(*h)->m_id,  &(*h)->m_size, &(*h)->p_version);
 	decode_char(&aux, &(*h)->sta_ip);
 	decode_int(&aux, &(*h)->sta_port);
+=======
+  *h = malloc(sizeof(msg_ip_address));
+  char * aux = buf;
+  decode_header(&aux, &(*h)->m_type, &(*h)->m_id,  &(*h)->m_size, &(*h)->p_version);
+  decode_char(&aux, &(*h)->sta_ip);
+  decode_int(&aux, &(*h)->sta_port);
+>>>>>>> 5c64f2fab2eb06c026e53df94bf0f07d4d1bbaad
   struc_ip_config * m = (struc_ip_config *) malloc(sizeof(struc_ip_config));
   decode_char(&aux, &m->intf_name);
   decode_char(&aux, &m->ip);
@@ -113,14 +130,14 @@ void decode_msg_ip_address(char * buf, int buf_len, msg_ip_address ** h) {
   decode_char(&aux, &m->gateway);
   decode_uint(&aux, &m->n_dns);
   if(m->n_dns > 0){
-   	//Não sei como tratar
-   	m->dns = (char **) malloc(sizeof(char *) * m->n_dns);
+    //Não sei como tratar
+    m->dns = (char **) malloc(sizeof(char *) * m->n_dns);
   }
 
   int i;
   for(i=0; i < m->n_dns; i++) {
-  	m->dns[i] = (char *) malloc(sizeof(char) * 18);
-	 	decode_char(&aux, &m->dns[i]);
+    m->dns[i] = (char *) malloc(sizeof(char) * 18);
+    decode_char(&aux, &m->dns[i]);
   }
 
   (*h)->config = *m;
@@ -144,16 +161,23 @@ msg_ip_address * send_msg_get_ip_address(int m_type, char * hostname, int portnu
     h.m_id = (*id)++;
     h.p_version =  NULL;
     copy_string(&h.p_version, ETHANOL_VERSION);
-		h.sta_ip = NULL;
+    h.sta_ip = NULL;
     copy_string(&h.sta_ip, sta_ip);
-		h.sta_port = sta_port;
+    h.sta_port = sta_port;
     h.config.intf_name =  NULL;
     copy_string(&(h.config.intf_name), intf_name);
     h.config.ip = NULL;
+<<<<<<< HEAD
 	  h.config.netmask = NULL;
 	  h.config.gateway = NULL;
 	  h.config.n_dns = 0;
 	  h.config.dns = NULL;
+=======
+    h.config.netmask = NULL;
+    h.config.gateway = NULL;
+    h.config.n_dns = 0;
+    h.config.dns = NULL;
+>>>>>>> 5c64f2fab2eb06c026e53df94bf0f07d4d1bbaad
     h.m_size = message_size_ip_address(&h);
 
     #ifdef DEBUG
@@ -216,7 +240,7 @@ void send_msg_set_ip_address(int m_type, char * hostname, int portnum, int * id,
     h.sta_ip =  NULL;
     copy_string(&h.sta_ip, sta_ip);
 
-		h.sta_port = sta_port;
+    h.sta_port = sta_port;
 
     h.config.intf_name = config->intf_name;
     h.config.ip = config->ip;
@@ -346,6 +370,77 @@ void process_msg_ipv4_address(char ** input, int input_len, char ** output, int 
     printf_msg_ip_address(h);
   #endif
   free_msg_ip_address(&h);
+<<<<<<< HEAD
+=======
+}
+
+
+void process_msg_ipv6_address(char ** input, int input_len, char ** output, int * output_len){
+  msg_ip_address * h;
+  decode_msg_ip_address(*input, input_len, &h);
+  int i;
+  /**************************************** FUNCAO LOCAL *************************/
+
+  if(h->m_type == MSG_GET_IPV6_ADDRESS){
+
+    /** GET **/
+
+    if(h->sta_ip != NULL){
+      /** call remote **/
+      msg_ip_address * h1 = send_msg_get_ipv6_address(h->sta_ip, h->sta_port, &h->m_id, h->config.intf_name, NULL, 0);
+      if (h1 != NULL) {
+        h->config.ip = h1->config.ip; h1->config.ip = NULL;
+        h->config.netmask = h1->config.netmask; h1->config.netmask = NULL;
+        h->config.gateway = h1->config.gateway; h1->config.gateway = NULL;
+        h->config.n_dns = h1->config.n_dns;
+        h->config.dns = (char **) malloc(sizeof(char *) * h->config.n_dns);
+        for(i = 0; i < h->config.n_dns; i++){
+            h->config.dns[i] = h1->config.dns[i]; h1->config.dns[i] = NULL;
+        }
+      }
+      free_msg_ip_address(&h1);
+    } else {
+
+      // TODO
+
+    }
+    // encode output
+    encode_msg_ip_address(h, output, output_len);
+
+  } else if (h->m_type == MSG_SET_IPV6_ADDRESS){
+
+    /** SET **/
+
+    if(strcmp(h->config.ip, "DHCP") == 0){
+      start_dhcp(h->config.intf_name);
+    }else{
+      // configure address in the interface
+      char ip_address[1024];
+      strcpy((char *)&ip_address, h->config.ip);
+      if (h->config.netmask) {
+        strcat((char *)&ip_address, "/");
+        strcat((char *)&ip_address, h->config.netmask);
+      }
+      set_ip(h->config.intf_name, (char *)&ip_address);
+      // configure gateway, if supplied
+      if (h->config.gateway) {
+        char net[1024];
+        strcpy((char *)&net, h->config.gateway);
+        if (h->config.netmask) {
+          strcat((char *)&net, "/");
+          strcat((char *)&net, h->config.netmask);
+        }
+        add_route(h->config.intf_name, (char *)&net);
+      }
+    }
+  }
+
+  /**************************************** Fim FUNCAO LOCAL *************************/
+  #ifdef DEBUG
+    printf_msg_ip_address(h);
+  #endif
+  free_msg_ip_address(&h);
+>>>>>>> 5c64f2fab2eb06c026e53df94bf0f07d4d1bbaad
 }
 
 

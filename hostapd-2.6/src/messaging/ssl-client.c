@@ -89,10 +89,15 @@
 #include "msg_mean_sta_stats.h"
 #include "msg_changed_ap.h"
 #include "msg_tos.h"
+<<<<<<< HEAD
 #include "msg_mtu.h"
 #include "msg_txqueuelen.h"
 
 #define NUM_TIPOS_MENSAGENS_STR 127
+=======
+
+#define NUM_TIPOS_MENSAGENS_STR 125
+>>>>>>> 5c64f2fab2eb06c026e53df94bf0f07d4d1bbaad
 char * todas_opcoes[] = {
 "MSG_HELLO_TYPE",
 "MSG_BYE_TYPE",
@@ -218,9 +223,13 @@ char * todas_opcoes[] = {
 "MSG_CHANGED_AP",
 "MSG_TOS_CLEANALL",
 "MSG_TOS_ADD",
+<<<<<<< HEAD
 "MSG_TOS_REPLACE",
 "MSG_SET_MTU",
 "MSG_SET_TXQUEUELEN"
+=======
+"MSG_TOS_REPLACE"
+>>>>>>> 5c64f2fab2eb06c026e53df94bf0f07d4d1bbaad
 };
 
 void call_msg_get_sta_statistics(char * hostname, int portnum, int * m_id, char * intf_name, char * sta_ip, int sta_port) {
@@ -592,13 +601,21 @@ void call_msg_intfs(char *hostname, int portnum, int *m_id)
 
 void call_msg_get_ipv4_address(char *hostname, int portnum, int *m_id, char * intf_name, char * sta_ip, int sta_port) {
   printf("msg_ipv4_address:\n");
+<<<<<<< HEAD
   struct msg_ip_address * h1 = send_msg_get_ipv4_address(hostname, portnum, m_id, intf_name, sta_ip, sta_port);
+=======
+  msg_ip_address * h1 = send_msg_get_ipv4_address(hostname, portnum, m_id, intf_name, sta_ip, sta_port);
+>>>>>>> 5c64f2fab2eb06c026e53df94bf0f07d4d1bbaad
   printf_msg_ip_address(h1);
   free_msg_ip_address(&h1);
 }
 
 void call_msg_set_ipv4_address(char *hostname, int portnum, int *m_id, char * intf_name, char * ip, char * netmask, char * gateway, unsigned int n_dns, char ** dns) {
+<<<<<<< HEAD
 	struc_ip_config * h = (struc_ip_config *) malloc(sizeof(struc_ip_config));
+=======
+	struc_ip_config *h = (struc_ip_config *) malloc(sizeof(struc_ip_config));
+>>>>>>> 5c64f2fab2eb06c026e53df94bf0f07d4d1bbaad
 	if(strcmp(ip,"DHCP") != 0){
 		h->intf_name = intf_name;
 		h->ip = ip;
@@ -626,13 +643,21 @@ void call_msg_set_ipv4_address(char *hostname, int portnum, int *m_id, char * in
 
 void call_msg_get_ipv6_address(char *hostname, int portnum, int *m_id, char * intf_name) {
   printf("msg_ipv6_address:\n");
+<<<<<<< HEAD
   struct msg_ip_address * h1 = send_msg_get_ipv6_address(hostname, portnum, m_id, intf_name, NULL, 0);
+=======
+  msg_ip_address * h1 = send_msg_get_ipv6_address(hostname, portnum, m_id, intf_name, NULL, 0);
+>>>>>>> 5c64f2fab2eb06c026e53df94bf0f07d4d1bbaad
   printf_msg_ip_address(h1);
   free_msg_ip_address(&h1);
 }
 
 void call_msg_set_ipv6_address(char *hostname, int portnum, int *m_id, char * intf_name, char * ip, char * netmask, char * gateway, unsigned int n_dns, char ** dns) {
+<<<<<<< HEAD
 	struc_ip_config * h = (struc_ip_config *) malloc(sizeof(struc_ip_config));
+=======
+	struc_ip_config *h = (struc_ip_config *) malloc(sizeof(struc_ip_config));
+>>>>>>> 5c64f2fab2eb06c026e53df94bf0f07d4d1bbaad
 	if(strcmp(ip,"DHCP") != 0){
 		h->intf_name = intf_name;
 		h->ip = ip;

@@ -1,4 +1,3 @@
-#
 # needs: libssl-dev
 #        libiw-dev
 #        libnl-dev libnl1
@@ -79,14 +78,33 @@ OBJS_FUNCOES += ../ethanol_functions/wlan_info.o
 
 
 OBJS = buffer_handler_fun.o ssl_common.o
-OBJS+= msg_error.o msg_common.o msg_hello.o msg_bye.o msg_ping.o
-OBJS+= msg_802_11e_enabled.o msg_ap_ctsprotection_enabled.o msg_ap_broadcastssid.o
-OBJS+= msg_ap_frameburstenabled.o msg_ap_guardinterval.o msg_ap_dtiminterval.o
-OBJS+= msg_ap_rtsthreshold.o msg_beacon_interval.o msg_bytesreceived.o
-OBJS+= msg_bytessent.o msg_packetsreceived.o msg_packetssent.o msg_packetslost.o
-OBJS+= msg_deauthenticate_user.o msg_disconnect_user.o msg_powersavemode.o msg_delay.o
-OBJS+= msg_failed.o msg_jitter.o msg_fastbsstransition_compatible.o
+OBJS+= msg_error.o
+OBJS+= msg_common.o
+OBJS+= msg_hello.o
+OBJS+= msg_bye.o
+OBJS+= msg_ping.o
+OBJS+= msg_802_11e_enabled.o
+OBJS+= msg_ap_ctsprotection_enabled.o
+OBJS+= msg_ap_broadcastssid.o
+OBJS+= msg_ap_frameburstenabled.o
+OBJS+= msg_ap_guardinterval.o
+OBJS+= msg_ap_dtiminterval.o
+OBJS+= msg_ap_rtsthreshold.o
+OBJS+= msg_beacon_interval.o
+OBJS+= msg_bytesreceived.o
+OBJS+= msg_bytessent.o
+OBJS+= msg_packetsreceived.o
+OBJS+= msg_packetssent.o
+OBJS+= msg_packetslost.o
+OBJS+= msg_deauthenticate_user.o
+OBJS+= msg_disconnect_user.o
+OBJS+= msg_powersavemode.o
+OBJS+= msg_delay.o
+OBJS+= msg_failed.o
+OBJS+= msg_jitter.o
+OBJS+= msg_fastbsstransition_compatible.o
 OBJS+= msg_association_process.o
+<<<<<<< HEAD
 OBJS+= msg_snr.o msg_frequency.o msg_currentchannel.o
 OBJS+= msg_mac.o msg_radio_wlans.o msg_channels.o msg_intf.o
 OBJS+= msg_beaconinfo.o msg_radio_linkstatistics.o
@@ -94,8 +112,33 @@ OBJS+= msg_wlan_info.o msg_channelbandwitdh.o msg_ipv4_address.o
 OBJS+= msg_txpower.o msg_ap_in_range.o
 OBJS+= msg_retries.o msg_uptime.o msg_routes.o
 OBJS+= msg_ssid.o msg_memory.o msg_cpu.o
+=======
+OBJS+= msg_snr.o
+OBJS+= msg_frequency.o
+OBJS+= msg_currentchannel.o
+OBJS+= msg_mac.o
+OBJS+= msg_radio_wlans.o
+OBJS+= msg_channels.o
+OBJS+= msg_intf.o
+OBJS+= msg_beaconinfo.o
+OBJS+= msg_radio_linkstatistics.o
+OBJS+= msg_wlan_info.o
+OBJS+= msg_channelbandwitdh.o
+OBJS+= msg_ipv4_address.o
+OBJS+= msg_txpower.o
+OBJS+= msg_ap_in_range.o
+OBJS+= msg_retries.o
+OBJS+= msg_uptime.o
+OBJS+= msg_routes.o
+OBJS+= msg_ssid.o
+OBJS+= msg_memory.o
+OBJS+= msg_cpu.o
+>>>>>>> 5c64f2fab2eb06c026e53df94bf0f07d4d1bbaad
 OBJS+= msg_scan.o
-OBJS+= msg_channelinfo.o msg_inform_beacon.o msg_interferencemap.o msg_request_begin_association.o
+OBJS+= msg_channelinfo.o
+OBJS+= msg_inform_beacon.o
+OBJS+= msg_interferencemap.o
+OBJS+= msg_request_begin_association.o
 OBJS+= msg_fragmentationthreshold.o
 OBJS+= msg_tx_bitrates.o
 OBJS+= msg_tx_bitrate.o
@@ -124,36 +167,36 @@ PROG = ethanol_station ethanol_client ethanol_server
 all: hostapd
 
 %.o: %.c
-	@echo ' compilando: ' $@
-	@echo $(CC) $(CFLAGS) -c -o $@ $< $(LIBS) $(INCLUDES)
-	$(CC) $(CFLAGS) -c $< -o $@ $(LIBS) $(INCLUDES)
+	@echo ' CC : ' $@
+#	@echo $(CC) $(CFLAGS) -c -o $@ $< $(LIBS) $(INCLUDES)
+	@$(CC) $(CFLAGS) -c $< -o $@ $(LIBS) $(INCLUDES)
 
 funcoes:
 	$(MAKE) -C ../ethanol_functions
 
 client: funcoes $(OBJS)
 	rm -f ethanol_client
-	@echo $(CC) $(CFLAGS) -o $@ $@.c $(LIBS) $(INCLUDES)
-	$(CC) $(CFLAGS) $(OBJS) $(OBJS_FUNCOES) -o ethanol_$@ ssl-client.c $(LIBS) $(INCLUDES)
+#	@echo $(CC) $(CFLAGS) -o $@ $@.c $(LIBS) $(INCLUDES)
+	@$(CC) $(CFLAGS) $(OBJS) $(OBJS_FUNCOES) -o ethanol_$@ ssl-client.c $(LIBS) $(INCLUDES)
 
 client_debug: CFLAGS += -DDEBUG
 client_debug: client
-	@echo ' compilando client com DEBUG'
+	@echo ' CC client com DEBUG'
 
 server: funcoes $(OBJS)
 	rm -f ethanol_server
-	$(CC) $(CFLAGS) -lpthread -c -o ssl-server.o ssl-server.c $(LIBS) $(INCLUDES)
-	@echo ' compilando: ' $@
-	@echo ">>$(CC)" $(CFLAGS) -o $@ $@.c $(LIBS) $(INCLUDES)
-	$(CC) $(CFLAGS) $(OBJS) $(OBJS_FUNCOES) ssl-server.o -o ethanol_$@ run-server.c $(LIBS) $(INCLUDES) -lpthread -lm -liw
+	@$(CC) $(CFLAGS) -lpthread -c -o ssl-server.o ssl-server.c $(LIBS) $(INCLUDES)
+	@echo ' CC: ' $@
+#	@echo ">>$(CC)" $(CFLAGS) -o $@ $@.c $(LIBS) $(INCLUDES)
+	@$(CC) $(CFLAGS) $(OBJS) $(OBJS_FUNCOES) ssl-server.o -o ethanol_$@ run-server.c $(LIBS) $(INCLUDES) -lpthread -lm -liw
 
 server_debug: CFLAGS += -DDEBUG
 server_debug: server
-	@echo ' compilando server com DEBUG'
+	@echo ' CC server com DEBUG'
 
 server_handover: CFLAGS += -DDEBUG -DHANDOVER
 server_handover: server
-	@echo ' compilando server com DEBUG e HANDOVER'
+	@echo ' CC server com DEBUG e HANDOVER'
 
 
 # this clause compiles the libraries to hostapd
@@ -173,20 +216,20 @@ clear: clean
 station: CFLAGS += -DPROCESS_STATION
 station: clean funcoes $(OBJS)
 	$(CC) $(CFLAGS) -lpthread -c -o ssl-server.o ssl-server.c $(LIBS) $(INCLUDES)
-	@echo ' compilando: ' $@
-	@echo ">>$(CC)" $(CFLAGS) -o $@ $@.c $(LIBS) $(INCLUDES)
+	@echo ' CC: ' $@
+#	@echo ">>$(CC)" $(CFLAGS) -o $@ $@.c $(LIBS) $(INCLUDES)
 	$(CC) $(CFLAGS) $(OBJS) $(OBJS_FUNCOES) ssl-server.o -o ethanol_$@ run-station.c $(LIBS) $(INCLUDES) -lpthread -lm -liw
 
 station_debug: CFLAGS += -DDEBUG
 station_debug: station
-	@echo ' compilando station com DEBUG'
+	@echo ' CC station com DEBUG'
 
 station_handover: CFLAGS += -DDEBUG -DHANDOVER
 station_handover: station
-	@echo ' compilando station com DEBUG e HANDOVER'
+	@echo ' CC station com DEBUG e HANDOVER'
 
 teste: funcoes $(OBJS)
-	@echo ' compilando: ' $@
+	@echo ' CC: ' $@
 	@echo ">>$(CC)" $(CFLAGS) -o $@ $@.c $(LIBS) $(INCLUDES)
 	$(CC) $(CFLAGS) $(OBJS) $(OBJS_FUNCOES) -o $@ $@.c $(LIBS) $(INCLUDES) -lpthread -lm -liw
 
@@ -205,15 +248,15 @@ debug: clear
 
 
 handover:
-	@echo "compilaçao para handover"
+	@echo "CC handover"
 	@echo "vai gerar dois programas: ethanol_server (controlador) e ethanol_station (para estação)"
 	@echo "para AP usar a versão gerada do hostapd com 'make ethanol'"
 	@printf "\n\n"
 	@rm -f ethanol_server
 	@rm -f ethanol_station
 	$(MAKE) clean
-	@printf "\n\n\nCompilando server\n"
+	@printf "\n\n\CC server\n"
 	$(MAKE) server_handover
 	$(MAKE) clean
-	@printf "\n\n\nCompilando station\n"
+	@printf "\n\n\CC station\n"
 	$(MAKE) station_handover
